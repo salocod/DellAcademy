@@ -1,10 +1,12 @@
-
-import Interface.JanelaPrincipal;
-import Manage.Aposta;
+import Interface.JanelaPrincipalGUI;
 
 
 public class DellAcademy {
     public static void main(String[] args) {
-        new JanelaPrincipal();
+        new JanelaPrincipalGUI();
     }
+
+
+
+
 }

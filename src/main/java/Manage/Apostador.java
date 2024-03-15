@@ -15,9 +15,6 @@ public class Apostador {
     }
     
     public boolean adicionarAposta(Aposta a) {
-        for (Aposta aposta : apostas) {
-            if(a.igual(aposta)) return false;
-        }
         return apostas.add(a);
     }
     

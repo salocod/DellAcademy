@@ -9,13 +9,13 @@ public class Aposta {
     private String nome, cpf;
     private int registro;
     
-    public Aposta(int[] vetor) {//criar uma aposta normal
-        criarAposta(vetor);
-        this.cpf = cpf;
+    public Aposta() {//criar uma aposta surpresa PARA SORTEAR
+        criarApostaPremiada();//VAI TER QUE MUDAR O METODO
     }
     
-    public Aposta(boolean surpresa) {//construtor para uma aposta surpresa(colocar true)
+    public Aposta(String nome, String cpf) {//construtor para uma aposta surpresa
         criarApostaSurpresa();
+        this.nome = nome;
         this.cpf = cpf;
     }
     
@@ -26,14 +26,20 @@ public class Aposta {
         this.cpf = cpf;
     }
     
+    private void criarApostaPremiada() {
+        aposta = new int[30];
+        Random rand = new Random();
+        for (int i = 0; i < 5; i++) {
+            aposta[i] = rand.nextInt(1, 50);
+        }
+    }
+    
     private void criarApostaSurpresa() {//cria uma aposta surpresa
         aposta = new int[5];
             Random rand = new Random();
             for (int i = 0; i < 5; i++) {
                 aposta[i] = rand.nextInt(1, 50);
             }
-            return;
-        
     }
     
     private void criarAposta(int[] vetor) {//metodo para "iniciar" uma aposta
@@ -57,8 +63,9 @@ public class Aposta {
     }
     
     public String printarAposta() {//printa os valores da aposta
-        String retorno = "Aposta: ";
+        String retorno = "";
         for (int i : aposta) {
+            if(i == 0) continue;
             retorno += i + " ";
         }
         return retorno;

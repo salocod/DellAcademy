@@ -1,11 +1,4 @@
-Interface\JanelaPrincipal.class
 Manage\ACMEApostas.class
 DellAcademy.class
-Interface\JanelaPrincipal$6.class
-Interface\JanelaPrincipal$4.class
-Manage\Apostador.class
-Interface\JanelaPrincipal$2.class
-Interface\JanelaPrincipal$1.class
-Interface\JanelaPrincipal$3.class
 Manage\Aposta.class
-Interface\JanelaPrincipal$5.class
+Manage\Apostador.class
