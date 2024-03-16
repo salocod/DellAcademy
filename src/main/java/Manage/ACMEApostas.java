@@ -1,7 +1,10 @@
 package Manage;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.swing.JTextArea;
 
 
 public class ACMEApostas {
@@ -13,7 +16,6 @@ public class ACMEApostas {
     private int CONTADOR;
     
     public ACMEApostas() {
-        apostaPremiada = new Aposta();
         listaApostadores = new ArrayList<>();
         listaApostas = new ArrayList<>();
         listaVencedores = new ArrayList<>();
@@ -44,23 +46,43 @@ public class ACMEApostas {
     }
     
     
-    public void apuracao() {
+    public void apuracao(JTextArea jta) {
         for (Aposta aposta : listaApostas) {
             if(conferir(aposta.getVetor())) listaVencedores.add(aposta);
+        }
+        if(apostaPremiada.getContador()==30) {
+            jta.append("Ninguem ganhou!\n");
+            return;
+        }
+        if(listaVencedores.isEmpty()) {
+            jta.append("Sorteando Novamente\n");
+            apostaPremiada.gerarNovoNumeroSorteado();
+            jta.setText(getListaNumerosSorteados());
+            apuracao(jta);
+            return;
+        }
+        jta.append("Tiveram ganhadores!\n");
+        for (Aposta aposta : listaVencedores) {
+            jta.append("Aposta: " + aposta.printarAposta());
         }
     }
 
     private boolean conferir(int[] array) {
-        Arrays.sort(apostaPremiada.getVetor());
-        Arrays.sort(array);
-        for (int i : array) {
-            if (Arrays.binarySearch(apostaPremiada.getVetor(), i) < 0) {
+        Set<Integer> numerosPremiados = new HashSet<>();
+        for (int numero : apostaPremiada.getVetor()) {
+            numerosPremiados.add(numero);
+        }
+
+        for (int numero : array) {
+            if (!numerosPremiados.contains(numero)) {
                 return false;
             }
         }
+
         return true;
     }
 
+    public void setApostaPremiada(Aposta apostaPremiada) {this.apostaPremiada=apostaPremiada;}
     public String getListaNumerosSorteados() {return apostaPremiada.getListaNumerosSorteados();}
     
     

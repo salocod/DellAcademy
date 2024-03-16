@@ -1,13 +1,16 @@
 package Manage;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class Aposta {
     
     private int[] aposta;
     private String nome, cpf, listaNumerosSorteados;
     private int registro, contadorNumerosAposta;
+    private Set<Integer> numerosUtilizados = new HashSet<>();
 
     
     public Aposta() {//criar uma aposta surpresa PARA SORTEAR
@@ -33,7 +36,13 @@ public class Aposta {
     private void criarApostaPremiada() {
         Random rand = new Random();
         for (int i = 0; i < 5; i++) {
-            aposta[i] = rand.nextInt(1, 50);
+        int numeroAleatorio;
+            do {
+                numeroAleatorio = rand.nextInt(50) + 1;
+            } while (numerosUtilizados.contains(numeroAleatorio));
+            
+            aposta[i] = numeroAleatorio;
+            numerosUtilizados.add(numeroAleatorio);
         }
     }
     
@@ -72,7 +81,9 @@ public class Aposta {
         return retorno;
     }
     
-    public String listaNumerosSorteados() {
+    public String iniciarNumerosSorteados() {
+        Random rand = new Random();
+        int random;
         String x = "01: X     02: X     03: X     04: X     05: X\n" +
                    "06: X     07: X     08: X     09: X     10: X\n" + 
                    "11: X     12: X     13: X     14: X     15: X\n" +
@@ -81,7 +92,12 @@ public class Aposta {
                    "26: X     27: X     28: X     29: X     30: X\n";
         for (int posicao = 1; posicao <= 5; posicao++) {
             contadorNumerosAposta = posicao;
-            int random = new Random().nextInt(1, 50);
+            
+            do {
+                random = rand.nextInt(50) + 1;
+            } while (numerosUtilizados.contains(random));
+            numerosUtilizados.add(random);
+
             if(posicao%5==0) {
                 aposta[posicao] = random;
                 x = x.replaceFirst(posicao + ": X\n", posicao + ": " + random + "\n");
@@ -100,9 +116,15 @@ public class Aposta {
     }
 
     public void gerarNovoNumeroSorteado() {
+        Random rand = new Random();
+        int random;
         if(contadorNumerosAposta>=30) return;
         contadorNumerosAposta++;
-        int random = new Random().nextInt(1, 50);
+        do {
+            random = rand.nextInt(50)+1;
+        } while(numerosUtilizados.contains(random));
+        numerosUtilizados.add(random);
+        
         if(contadorNumerosAposta%5==0) {//5,10,15,20,25,30
             aposta[contadorNumerosAposta] = random;
             listaNumerosSorteados = listaNumerosSorteados.replaceFirst(contadorNumerosAposta + ": X\n", contadorNumerosAposta + ": " + random + "\n");
@@ -128,8 +150,16 @@ public class Aposta {
         }
     }
 
+    private boolean possui(int valor) {
+        for (int i : aposta) {
+            if(valor == i) return true;
+        }
+        return false;
+    }
+
     public void setRegistro(int registro) {this.registro=registro;}
     public int getRegistro() {return registro;}
+    public int getContador() {return contadorNumerosAposta;}
     public int[] getVetor() {return aposta;}
     public String getCpf() {return this.cpf;}
     public String getNome() {return this.nome;}
