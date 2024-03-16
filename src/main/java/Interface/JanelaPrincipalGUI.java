@@ -53,14 +53,14 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jbtLimpar = new javax.swing.JButton();
         jbtListar = new javax.swing.JButton();
-        FaseSorteio = new javax.swing.JPanel();
+        FaseSorteioApuracao = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jbtSorteioSortear = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtaListaNumerosSorteados = new javax.swing.JTextArea();
         jbtApurar = new javax.swing.JButton();
-        FaseApuracao = new javax.swing.JPanel();
+        FasePremiacao = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(600, 490));
@@ -229,8 +229,8 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
 
         cardJPanel.add(FaseAposta, "card2");
 
-        FaseSorteio.setMaximumSize(new java.awt.Dimension(600, 490));
-        FaseSorteio.setMinimumSize(new java.awt.Dimension(600, 490));
+        FaseSorteioApuracao.setMaximumSize(new java.awt.Dimension(600, 490));
+        FaseSorteioApuracao.setMinimumSize(new java.awt.Dimension(600, 490));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Symbol", 1, 36)); // NOI18N
         jLabel4.setText("Sorteio");
@@ -246,6 +246,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
 
         jtaListaNumerosSorteados.setEditable(false);
         jtaListaNumerosSorteados.setColumns(20);
+        jtaListaNumerosSorteados.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jtaListaNumerosSorteados.setRows(5);
         jtaListaNumerosSorteados.setEnabled(false);
         jScrollPane2.setViewportView(jtaListaNumerosSorteados);
@@ -257,36 +258,36 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout FaseSorteioLayout = new javax.swing.GroupLayout(FaseSorteio);
-        FaseSorteio.setLayout(FaseSorteioLayout);
-        FaseSorteioLayout.setHorizontalGroup(
-            FaseSorteioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FaseSorteioLayout.createSequentialGroup()
-                .addGroup(FaseSorteioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FaseSorteioLayout.createSequentialGroup()
+        javax.swing.GroupLayout FaseSorteioApuracaoLayout = new javax.swing.GroupLayout(FaseSorteioApuracao);
+        FaseSorteioApuracao.setLayout(FaseSorteioApuracaoLayout);
+        FaseSorteioApuracaoLayout.setHorizontalGroup(
+            FaseSorteioApuracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FaseSorteioApuracaoLayout.createSequentialGroup()
+                .addGroup(FaseSorteioApuracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FaseSorteioApuracaoLayout.createSequentialGroup()
                         .addGap(240, 240, 240)
                         .addComponent(jLabel4))
-                    .addGroup(FaseSorteioLayout.createSequentialGroup()
+                    .addGroup(FaseSorteioApuracaoLayout.createSequentialGroup()
                         .addGap(243, 243, 243)
                         .addComponent(jLabel5)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FaseSorteioLayout.createSequentialGroup()
-                .addContainerGap(125, Short.MAX_VALUE)
-                .addGroup(FaseSorteioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FaseSorteioLayout.createSequentialGroup()
-                        .addComponent(jbtSorteioSortear, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(219, 219, 219))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FaseSorteioLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(112, 112, 112))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FaseSorteioLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FaseSorteioApuracaoLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jbtApurar)
-                .addGap(256, 256, 256))
+                .addGap(251, 251, 251))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FaseSorteioApuracaoLayout.createSequentialGroup()
+                .addContainerGap(64, Short.MAX_VALUE)
+                .addGroup(FaseSorteioApuracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FaseSorteioApuracaoLayout.createSequentialGroup()
+                        .addComponent(jbtSorteioSortear, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(219, 219, 219))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FaseSorteioApuracaoLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53))))
         );
-        FaseSorteioLayout.setVerticalGroup(
-            FaseSorteioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FaseSorteioLayout.createSequentialGroup()
+        FaseSorteioApuracaoLayout.setVerticalGroup(
+            FaseSorteioApuracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FaseSorteioApuracaoLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -294,26 +295,26 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jbtApurar)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addGap(76, 76, 76))
         );
 
-        cardJPanel.add(FaseSorteio, "card3");
+        cardJPanel.add(FaseSorteioApuracao, "card3");
 
-        javax.swing.GroupLayout FaseApuracaoLayout = new javax.swing.GroupLayout(FaseApuracao);
-        FaseApuracao.setLayout(FaseApuracaoLayout);
-        FaseApuracaoLayout.setHorizontalGroup(
-            FaseApuracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout FasePremiacaoLayout = new javax.swing.GroupLayout(FasePremiacao);
+        FasePremiacao.setLayout(FasePremiacaoLayout);
+        FasePremiacaoLayout.setHorizontalGroup(
+            FasePremiacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 600, Short.MAX_VALUE)
         );
-        FaseApuracaoLayout.setVerticalGroup(
-            FaseApuracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        FasePremiacaoLayout.setVerticalGroup(
+            FasePremiacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 490, Short.MAX_VALUE)
         );
 
-        cardJPanel.add(FaseApuracao, "card4");
+        cardJPanel.add(FasePremiacao, "card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -452,7 +453,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
 
     public void avancarFase() {
         FaseAposta.setVisible(false);
-        FaseSorteio.setVisible(true);
+        FaseSorteioApuracao.setVisible(true);
         setTitle("Fase 2: Sorteio");
     }
 
@@ -460,8 +461,8 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FaseAposta;
-    private javax.swing.JPanel FaseApuracao;
-    private javax.swing.JPanel FaseSorteio;
+    private javax.swing.JPanel FasePremiacao;
+    private javax.swing.JPanel FaseSorteioApuracao;
     private javax.swing.JPanel cardJPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

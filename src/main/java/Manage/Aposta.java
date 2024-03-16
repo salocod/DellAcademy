@@ -11,7 +11,13 @@ public class Aposta {
     private String nome, cpf, listaNumerosSorteados;
     private int registro, contadorNumerosAposta;
     private Set<Integer> numerosUtilizados = new HashSet<>();
-
+    /*
+    PRECISA SER FEITO:
+    CANCELAR OPCAO DE INSERIR MESMO NUMERO NAS APOSTAS!
+    SÓ PODE INSERIR NUMEROS DIFERENTES:
+    1 1 2 3 4 -> NAO PODE
+    1 2 3 4 5 -> PODE
+     */
     
     public Aposta() {//criar uma aposta surpresa PARA SORTEAR
         aposta = new int[31];
@@ -31,8 +37,7 @@ public class Aposta {
         this.nome = nome;
         this.cpf = cpf;
     }
-    //0,1,2,3,4,5,6,7,8,9,10
-    //1,2,3,4,5,6,7,8,9,10,11
+
     private void criarApostaPremiada() {
         Random rand = new Random();
         for (int i = 0; i < 5; i++) {
@@ -124,7 +129,7 @@ public class Aposta {
             random = rand.nextInt(50)+1;
         } while(numerosUtilizados.contains(random));
         numerosUtilizados.add(random);
-        
+
         if(contadorNumerosAposta%5==0) {//5,10,15,20,25,30
             aposta[contadorNumerosAposta] = random;
             listaNumerosSorteados = listaNumerosSorteados.replaceFirst(contadorNumerosAposta + ": X\n", contadorNumerosAposta + ": " + random + "\n");
@@ -148,13 +153,6 @@ public class Aposta {
         :
         listaNumerosSorteados.replaceFirst("0"+contadorNumerosAposta + ": X", "0"+contadorNumerosAposta + ": " + random);
         }
-    }
-
-    private boolean possui(int valor) {
-        for (int i : aposta) {
-            if(valor == i) return true;
-        }
-        return false;
     }
 
     public void setRegistro(int registro) {this.registro=registro;}

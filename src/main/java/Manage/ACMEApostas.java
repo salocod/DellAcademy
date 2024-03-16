@@ -84,8 +84,4 @@ public class ACMEApostas {
 
     public void setApostaPremiada(Aposta apostaPremiada) {this.apostaPremiada=apostaPremiada;}
     public String getListaNumerosSorteados() {return apostaPremiada.getListaNumerosSorteados();}
-    
-    
-    
-    
 }
