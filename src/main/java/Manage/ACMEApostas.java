@@ -1,21 +1,22 @@
 package Manage;
 
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Arrays;
 
 
 public class ACMEApostas {
     
     private ArrayList<Apostador> listaApostadores;
     private ArrayList<Aposta> listaApostas;
+    private ArrayList<Aposta> listaVencedores;
     private Aposta apostaPremiada;
-    private String listaNumerosSorteados = listaNumerosSorteados();
-    
-    private int CONTADOR, contadorNumerosAposta;
+    private int CONTADOR;
     
     public ACMEApostas() {
+        apostaPremiada = new Aposta();
         listaApostadores = new ArrayList<>();
         listaApostas = new ArrayList<>();
+        listaVencedores = new ArrayList<>();
         CONTADOR = 1000;
     }
     
@@ -42,60 +43,25 @@ public class ACMEApostas {
         return listaApostas.isEmpty() ? "Nenhuma aposta efetuada!\n":retorno;
     }
     
-    public String listaNumerosSorteados() {
-        String x = "01: X     02: X     03: X     04: X     05: X\n" +
-                   "06: X     07: X     08: X     09: X     10: X\n" + 
-                   "11: X     12: X     13: X     14: X     15: X\n" +
-                   "16: X     17: X     18: X     19: X     20: X\n" +
-                   "21: X     22: X     23: X     24: X     25: X\n" +
-                   "26: X     27: X     28: X     29: X     30: X\n";
-        for (int i = 1; i <= 5; i++) {
-            contadorNumerosAposta = i;
-            int random = new Random().nextInt(1, 50);
-            if(i%5==0) {
-                x = x.replaceFirst(i + ": X\n", i + ": " + random + "\n");
-                continue;
-            }
-            if(random<10) {
-                x = x.replaceFirst(i + ": X ", i + ": " + random + " ");
-                continue;
-            }
-            x = x.replaceFirst(i + ": X ", i + ": " + random);
-        }
-        return x;
-    }
-
-    public void gerarNovoNumeroSorteado() {
-        contadorNumerosAposta++;
-        int random = new Random().nextInt(1, 50);
-        if(contadorNumerosAposta%5==0) {
-            listaNumerosSorteados = listaNumerosSorteados.replaceFirst(contadorNumerosAposta + ": X\n", contadorNumerosAposta + ": " + random + "\n");
-        }
-        if(contadorNumerosAposta>9) {
-        listaNumerosSorteados = (random>10) ? 
-        listaNumerosSorteados.replaceFirst(contadorNumerosAposta + ": X ", contadorNumerosAposta + ": " + random) 
-        :
-        listaNumerosSorteados.replaceFirst(contadorNumerosAposta + ": X", contadorNumerosAposta + ": " + random);
-        } else {
-        listaNumerosSorteados = (random>10) ? 
-        listaNumerosSorteados.replaceFirst("0"+contadorNumerosAposta + ": X ", "0"+contadorNumerosAposta + ": " + random) 
-        :
-        listaNumerosSorteados.replaceFirst("0"+contadorNumerosAposta + ": X", "0"+contadorNumerosAposta + ": " + random);
-        }
-        
-    }
-    
     
     public void apuracao() {
-        /*
-        Aposta x = sorteada;
-        for(Apostas aposta : todasApostas) {
-            if(x.igual(aposta));
-        */
-        
+        for (Aposta aposta : listaApostas) {
+            if(conferir(aposta.getVetor())) listaVencedores.add(aposta);
+        }
     }
 
-    public String getListaNumerosSorteados() {return listaNumerosSorteados;}
+    private boolean conferir(int[] array) {
+        Arrays.sort(apostaPremiada.getVetor());
+        Arrays.sort(array);
+        for (int i : array) {
+            if (Arrays.binarySearch(apostaPremiada.getVetor(), i) < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public String getListaNumerosSorteados() {return apostaPremiada.getListaNumerosSorteados();}
     
     
     
