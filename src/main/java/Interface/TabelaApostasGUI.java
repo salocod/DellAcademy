@@ -5,6 +5,7 @@
 package Interface;
 
 import Manage.ACMEApostas;
+import Manage.Utils;
 import javax.swing.JButton;
 
 /**
@@ -22,7 +23,7 @@ public class TabelaApostasGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         acmeApostas.setValoresListarTable(jTable);
-        acmeApostas.centralizarConteudoTabela(jTable);
+        Utils.centralizarConteudoTabela(jTable);
     }
 
     /**

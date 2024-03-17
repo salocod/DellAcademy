@@ -1,18 +1,12 @@
 package Manage;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
+import javax.swing.JLabel;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 
 
 public class ACMEApostas {
@@ -22,12 +16,14 @@ public class ACMEApostas {
     private ArrayList<Aposta> listaVencedores;
     private Aposta apostaPremiada;
     private int CONTADOR;
+    private boolean entrar;
     
     public ACMEApostas() {
         listaApostadores = new ArrayList<>();
         listaApostas = new ArrayList<>();
         listaVencedores = new ArrayList<>();
         CONTADOR = 1000;
+        entrar = false;
     }
     
     public Apostador pesquisaApostador(String nome, String cpf) {
@@ -45,37 +41,42 @@ public class ACMEApostas {
         return listaApostas.add(aposta);
     }
     
-    public String listarApostas() {
-        String retorno = "";
-        for (Aposta aposta : listaApostas) {
-            retorno += "Aposta: " + aposta.getRegistro() + ": " + aposta.getNumeros() + "\n";
-        }
-        return listaApostas.isEmpty() ? "Nenhuma aposta efetuada!\n":retorno;
-    }
-    
-    
-    public void apuracao(JTextArea jta) {
-        for (Aposta aposta : listaApostas) {
-            if(conferirPremiada(aposta.getVetor())) listaVencedores.add(aposta);
-        }
-        if(apostaPremiada.getContador()==30) {
-            jta.append("Ninguem ganhou!\n");
+    public void apuracao() {
+        if(apostaPremiada.getContador()>30) {
             return;
         }
-        if(listaVencedores.isEmpty()) {
-            jta.append("Sorteando Novamente\n");
-            apostaPremiada.gerarNovoNumeroSorteado();
-            jta.setText(getListaNumerosSorteados());
-            apuracao(jta);
-            return;
+        for (Aposta aposta : listaApostas) {
+            if(conferirPremiada(aposta.getVetor())) {
+                listaVencedores.add(aposta);
+                entrar = true;
+            }
         }
-        jta.append("Tiveram ganhadores!\n");
-        for (Aposta aposta : listaVencedores) {
-            jta.append("Aposta: " + aposta.getNumeros());
-        }
+        if(entrar) apostaPremiada.setContador();
+        apostaPremiada.gerarNovoNumeroSorteado();
+        apuracao();
     }
 
-    private boolean conferirPremiada(int[] array) {
+    public void preencherNumerosSorteados(JTable jtable, JLabel jLabel) {
+        DefaultTableModel model = (DefaultTableModel) jtable.getModel();
+        for (int i = 0; i < 5; i++) {
+            model.addRow(new Object[]{apostaPremiada.getVetor()[i], 1});
+        }
+        for (int i = 4; i < apostaPremiada.getContadorAux(); i++) {
+            model.addRow(new Object[]{apostaPremiada.getVetor()[i], i+1});
+        }
+        jLabel.setText("Rodadas: " + apostaPremiada.getContadorAux());
+    }
+
+    public void preencherApostasVencedoras(JTable jtable, JLabel jLabel) {
+        DefaultTableModel tableModel = (DefaultTableModel) jtable.getModel();
+        for (Aposta aposta : listaVencedores) {
+            String[] lista = {aposta.getRegistro() + "", aposta.getNumeros(), aposta.getNome(), aposta.getCpf()};
+            tableModel.addRow(lista);
+        }
+        jLabel.setText("Quantidade: " + listaVencedores.size());
+    }
+
+    public boolean conferirPremiada(int[] array) {
         Set<Integer> numerosPremiados = new HashSet<>();
         for (int numero : apostaPremiada.getVetor()) {
             numerosPremiados.add(numero);
@@ -100,43 +101,13 @@ public class ACMEApostas {
         return true;
     }
 
-    //VERIFICAR NUMEROS MAIS APARECIDOS
-
-    private ArrayList<int[]> listaVetores() {
+    public ArrayList<int[]> getListaVetores() {
         ArrayList<int[]> apostasX = new ArrayList<>();
         for (Aposta aposta : listaApostas) {
             apostasX.add(aposta.getVetor());
         }
         return apostasX;
     }
-
-    public void preencherNumerosOrdenadosPorFrequencia(JTable jtable) {
-        HashMap<Integer, Integer> mapaOrdenado = ordenarPorFrequencia(obterMapaFrequencia(listaVetores()));
-
-        DefaultTableModel tableModel = (DefaultTableModel) jtable.getModel();
-        tableModel.setColumnIdentifiers(new String[]{"Número", "Frequência"});
-        
-        for (Map.Entry<Integer, Integer> entry : mapaOrdenado.entrySet()) {
-            tableModel.addRow(new Object[]{entry.getKey(), entry.getValue()});
-        }
-    }
-
-    private HashMap<Integer, Integer> obterMapaFrequencia(ArrayList<int[]> listaArrays) {
-        HashMap<Integer, Integer> mapaFrequencia = new HashMap<>();
-        for (int[] array : listaArrays) {
-            for (int num : array) {
-                mapaFrequencia.put(num, mapaFrequencia.getOrDefault(num, 0) + 1);
-            }
-        }
-        return mapaFrequencia;
-    }
-
-    private HashMap<Integer, Integer> ordenarPorFrequencia(HashMap<Integer, Integer> mapa) {
-        return mapa.entrySet().stream()
-                .sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
-    }
-
 
     //JTABLE
     public void setValoresListarTable(JTable jtable) {
@@ -147,20 +118,14 @@ public class ACMEApostas {
         }
     }
 
-    //USO PARA CENTRALIZAR ITENS TABELA
-    public void centralizarConteudoTabela(JTable jTable) {
-        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-        renderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
-        
-        TableColumnModel columnModel = jTable.getColumnModel();
-        int columns = columnModel.getColumnCount();
-        
-        for (int i = 0; i < columns; i++) {
-            columnModel.getColumn(i).setCellRenderer(renderer);
+    public String getListaPremiada() {
+        String retorn ="";
+        for (int i : apostaPremiada.getVetor()) {
+            retorn += i;
         }
+        return retorn;
     }
 
-
+    public ArrayList<Aposta> getListaAposta() {return listaApostas;}
     public void setApostaPremiada(Aposta apostaPremiada) {this.apostaPremiada=apostaPremiada;}
-    public String getListaNumerosSorteados() {return apostaPremiada.getListaNumerosSorteados();}
 }

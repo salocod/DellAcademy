@@ -7,12 +7,13 @@ package Interface;
 import Manage.ACMEApostas;
 import Manage.Aposta;
 import Manage.Apostador;
+import Manage.Utils;
+import javax.swing.JOptionPane;
 
 
 public class JanelaPrincipalGUI extends javax.swing.JFrame {
 
     private ACMEApostas acme;
-    private Aposta apostaPremiada;
     
     public JanelaPrincipalGUI() {
         super();
@@ -55,17 +56,25 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         jtfNumero4 = new javax.swing.JTextField();
         jtfNumero5 = new javax.swing.JTextField();
         FaseSorteioApuracao = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jbtSorteioSortear = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jtaListaNumerosSorteados = new javax.swing.JTextArea();
-        jbtApurar = new javax.swing.JButton();
         jbtAvancarFasePremiacao = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTableNumeroRodadas = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTableApostasVencedoras = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
+        JLableQtdRodadas = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTableNumerosFrequencia = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        JLableQtdVencedores = new javax.swing.JLabel();
+        jbtListarApostasApuracao = new javax.swing.JButton();
         FasePremiacao = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTableNumerosFrequencia = new javax.swing.JTable();
+        jTableVencedores = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 490));
@@ -276,86 +285,84 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         FaseSorteioApuracao.setMinimumSize(new java.awt.Dimension(600, 490));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Symbol", 1, 36)); // NOI18N
-        jLabel4.setText("Sorteio");
+        jLabel4.setText("Apuracao");
 
-        jbtSorteioSortear.setText("Sortear");
-        jbtSorteioSortear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtSorteioSortearActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("Numeros Sorteados");
-
-        jtaListaNumerosSorteados.setEditable(false);
-        jtaListaNumerosSorteados.setColumns(20);
-        jtaListaNumerosSorteados.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jtaListaNumerosSorteados.setRows(5);
-        jtaListaNumerosSorteados.setEnabled(false);
-        jScrollPane2.setViewportView(jtaListaNumerosSorteados);
-
-        jbtApurar.setText("Apurar");
-        jbtApurar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtApurarActionPerformed(evt);
-            }
-        });
-
-        jbtAvancarFasePremiacao.setText("Avancar");
+        jbtAvancarFasePremiacao.setText("Premiação");
+        jbtAvancarFasePremiacao.setMaximumSize(new java.awt.Dimension(70, 25));
+        jbtAvancarFasePremiacao.setMinimumSize(new java.awt.Dimension(70, 25));
+        jbtAvancarFasePremiacao.setPreferredSize(new java.awt.Dimension(70, 25));
         jbtAvancarFasePremiacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtAvancarFasePremiacaoActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout FaseSorteioApuracaoLayout = new javax.swing.GroupLayout(FaseSorteioApuracao);
-        FaseSorteioApuracao.setLayout(FaseSorteioApuracaoLayout);
-        FaseSorteioApuracaoLayout.setHorizontalGroup(
-            FaseSorteioApuracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FaseSorteioApuracaoLayout.createSequentialGroup()
-                .addGroup(FaseSorteioApuracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FaseSorteioApuracaoLayout.createSequentialGroup()
-                        .addGap(240, 240, 240)
-                        .addComponent(jLabel4))
-                    .addGroup(FaseSorteioApuracaoLayout.createSequentialGroup()
-                        .addGap(243, 243, 243)
-                        .addComponent(jLabel5)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FaseSorteioApuracaoLayout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
-                .addGroup(FaseSorteioApuracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FaseSorteioApuracaoLayout.createSequentialGroup()
-                        .addComponent(jbtSorteioSortear, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(219, 219, 219))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FaseSorteioApuracaoLayout.createSequentialGroup()
-                        .addGroup(FaseSorteioApuracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtAvancarFasePremiacao, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(53, 53, 53))))
-            .addGroup(FaseSorteioApuracaoLayout.createSequentialGroup()
-                .addGap(270, 270, 270)
-                .addComponent(jbtApurar)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        FaseSorteioApuracaoLayout.setVerticalGroup(
-            FaseSorteioApuracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FaseSorteioApuracaoLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbtSorteioSortear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbtApurar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(jbtAvancarFasePremiacao)
-                .addGap(27, 27, 27))
-        );
+        jLabel5.setText("Sorteados:");
 
-        cardJPanel.add(FaseSorteioApuracao, "card3");
+        jTableNumeroRodadas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Numero", "Rodada"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jTableNumeroRodadas);
+        if (jTableNumeroRodadas.getColumnModel().getColumnCount() > 0) {
+            jTableNumeroRodadas.getColumnModel().getColumn(0).setResizable(false);
+            jTableNumeroRodadas.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        jTableApostasVencedoras.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Aposta", "Numeros", "Nome", "CPF"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableApostasVencedoras.getTableHeader().setReorderingAllowed(false);
+        jScrollPane5.setViewportView(jTableApostasVencedoras);
+        if (jTableApostasVencedoras.getColumnModel().getColumnCount() > 0) {
+            jTableApostasVencedoras.getColumnModel().getColumn(0).setResizable(false);
+            jTableApostasVencedoras.getColumnModel().getColumn(1).setResizable(false);
+            jTableApostasVencedoras.getColumnModel().getColumn(2).setResizable(false);
+            jTableApostasVencedoras.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jLabel6.setText("Frequencias:");
+
+        JLableQtdRodadas.setText("Rodadas:");
 
         jTableNumerosFrequencia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -365,8 +372,6 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
                 "Número", "Frequência"
             }
         ) {
-            
-            @SuppressWarnings("rawtypes")
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.Integer.class
             };
@@ -374,7 +379,6 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
                 false, false
             };
 
-            @SuppressWarnings({ "rawtypes", "unchecked" })
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
@@ -384,10 +388,132 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             }
         });
         jTableNumerosFrequencia.getTableHeader().setReorderingAllowed(false);
-        jScrollPane3.setViewportView(jTableNumerosFrequencia);
+        jScrollPane6.setViewportView(jTableNumerosFrequencia);
         if (jTableNumerosFrequencia.getColumnModel().getColumnCount() > 0) {
             jTableNumerosFrequencia.getColumnModel().getColumn(0).setResizable(false);
             jTableNumerosFrequencia.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        jLabel7.setText("Apostas Vencedoras:");
+
+        JLableQtdVencedores.setText("Quantidade:");
+
+        jbtListarApostasApuracao.setText("Todas Apostas");
+        jbtListarApostasApuracao.setMaximumSize(new java.awt.Dimension(70, 24));
+        jbtListarApostasApuracao.setMinimumSize(new java.awt.Dimension(70, 24));
+        jbtListarApostasApuracao.setPreferredSize(new java.awt.Dimension(70, 24));
+        jbtListarApostasApuracao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtListarApostasApuracaoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(81, 81, 81)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(22, 22, 22)
+                                        .addComponent(JLableQtdVencedores, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jbtListarApostasApuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbtAvancarFasePremiacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addGap(66, 66, 66)
+                                    .addComponent(JLableQtdRodadas, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel4)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(JLableQtdVencedores))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
+                    .addComponent(JLableQtdRodadas))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtAvancarFasePremiacao, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtListarApostasApuracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout FaseSorteioApuracaoLayout = new javax.swing.GroupLayout(FaseSorteioApuracao);
+        FaseSorteioApuracao.setLayout(FaseSorteioApuracaoLayout);
+        FaseSorteioApuracaoLayout.setHorizontalGroup(
+            FaseSorteioApuracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FaseSorteioApuracaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        FaseSorteioApuracaoLayout.setVerticalGroup(
+            FaseSorteioApuracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FaseSorteioApuracaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        cardJPanel.add(FaseSorteioApuracao, "card3");
+
+        jTableVencedores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Vencedor", "Prêmio"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableVencedores.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(jTableVencedores);
+        if (jTableVencedores.getColumnModel().getColumnCount() > 0) {
+            jTableVencedores.getColumnModel().getColumn(0).setResizable(false);
+            jTableVencedores.getColumnModel().getColumn(1).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -395,16 +521,16 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addGap(62, 62, 62)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(77, 77, 77)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout FasePremiacaoLayout = new javax.swing.GroupLayout(FasePremiacao);
@@ -440,18 +566,6 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbtApurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtApurarActionPerformed
-        acme.apuracao(jtaListaNumerosSorteados);
-    }//GEN-LAST:event_jbtApurarActionPerformed
-
-    private void jbtSorteioSortearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSorteioSortearActionPerformed
-        apostaPremiada = new Aposta();
-        apostaPremiada.iniciarNumerosSorteados();
-        acme.setApostaPremiada(apostaPremiada);
-        jtaListaNumerosSorteados.setText(apostaPremiada.iniciarNumerosSorteados());
-        jbtSorteioSortear.setEnabled(false);
-    }//GEN-LAST:event_jbtSorteioSortearActionPerformed
-
     private void jbtListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListarActionPerformed
             new TabelaApostasGUI(acme, jbtListar);
             jbtListar.setEnabled(false);
@@ -462,7 +576,16 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtLimparActionPerformed
 
     private void jbtSortearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSortearActionPerformed
-        new ConfirmacaoFImApostaGUI(this);
+        int result = JOptionPane.showConfirmDialog(null, "Voce deseja iniciar a fase de sorteio?", "Confirmacao", JOptionPane.YES_NO_OPTION);
+        if(result == JOptionPane.YES_OPTION) {
+            avancarFaseApostaParaSorteio();
+            acme.setApostaPremiada(new Aposta());
+            acme.apuracao();
+            acme.preencherApostasVencedoras(jTableApostasVencedoras, JLableQtdVencedores);
+            acme.preencherNumerosSorteados(jTableNumeroRodadas, JLableQtdRodadas);
+            Utils.preencherNumerosOrdenadosPorFrequencia(jTableNumerosFrequencia, acme.getListaVetores());
+            System.out.println(acme.getListaPremiada());
+        }
     }//GEN-LAST:event_jbtSortearActionPerformed
 
     private void jcbSurpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbSurpresaActionPerformed
@@ -598,9 +721,14 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
     private void jbtAvancarFasePremiacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAvancarFasePremiacaoActionPerformed
        FaseSorteioApuracao.setVisible(false);
        FasePremiacao.setVisible(true);
-       acme.preencherNumerosOrdenadosPorFrequencia(jTableNumerosFrequencia);
-       acme.centralizarConteudoTabela(jTableNumerosFrequencia);
+       Utils.preencherNumerosOrdenadosPorFrequencia(jTableVencedores, acme.getListaVetores());
+       Utils.centralizarConteudoTabela(jTableVencedores);
     }//GEN-LAST:event_jbtAvancarFasePremiacaoActionPerformed
+
+    private void jbtListarApostasApuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListarApostasApuracaoActionPerformed
+        new TabelaApostasGUI(acme, jbtListarApostasApuracao);
+        jbtListarApostasApuracao.setEnabled(false);
+    }//GEN-LAST:event_jbtListarApostasApuracaoActionPerformed
 
     public void avancarFaseApostaParaSorteio() {
         FaseAposta.setVisible(false);
@@ -614,27 +742,35 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
     private javax.swing.JPanel FaseAposta;
     private javax.swing.JPanel FasePremiacao;
     private javax.swing.JPanel FaseSorteioApuracao;
+    private javax.swing.JLabel JLableQtdRodadas;
+    private javax.swing.JLabel JLableQtdVencedores;
     private javax.swing.JPanel cardJPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTable jTableApostasVencedoras;
+    private javax.swing.JTable jTableNumeroRodadas;
     private javax.swing.JTable jTableNumerosFrequencia;
+    private javax.swing.JTable jTableVencedores;
     private javax.swing.JButton jbtApostar;
-    private javax.swing.JButton jbtApurar;
     private javax.swing.JButton jbtAvancarFasePremiacao;
     private javax.swing.JButton jbtIniciar;
     private javax.swing.JButton jbtLimpar;
     private javax.swing.JButton jbtListar;
+    private javax.swing.JButton jbtListarApostasApuracao;
     private javax.swing.JButton jbtSortear;
-    private javax.swing.JButton jbtSorteioSortear;
     private javax.swing.JCheckBox jcbSurpresa;
-    private javax.swing.JTextArea jtaListaNumerosSorteados;
     private javax.swing.JTextArea jtaMensagensTelaInicial;
     private javax.swing.JTextField jtfCPF;
     private javax.swing.JTextField jtfNome;
