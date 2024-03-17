@@ -1,12 +1,19 @@
 package Manage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 
 public class ACMEApostas {
@@ -94,13 +101,63 @@ public class ACMEApostas {
         return true;
     }
 
+    //VERIFICAR NUMEROS MAIS APARECIDOS
+
+    private ArrayList<int[]> listaVetores() {
+        ArrayList<int[]> apostasX = new ArrayList<>();
+        for (Aposta aposta : listaApostas) {
+            apostasX.add(aposta.getVetor());
+        }
+        return apostasX;
+    }
+
+    public void preencherNumerosOrdenadosPorFrequencia(JTable jtable) {
+        HashMap<Integer, Integer> mapaOrdenado = ordenarPorFrequencia(obterMapaFrequencia(listaVetores()));
+
+        DefaultTableModel tableModel = (DefaultTableModel) jtable.getModel();
+        tableModel.setColumnIdentifiers(new String[]{"Número", "Frequência"});
+        
+        for (Map.Entry<Integer, Integer> entry : mapaOrdenado.entrySet()) {
+            tableModel.addRow(new Object[]{entry.getKey(), entry.getValue()});
+        }
+    }
+
+    private HashMap<Integer, Integer> obterMapaFrequencia(ArrayList<int[]> listaArrays) {
+        HashMap<Integer, Integer> mapaFrequencia = new HashMap<>();
+        for (int[] array : listaArrays) {
+            for (int num : array) {
+                mapaFrequencia.put(num, mapaFrequencia.getOrDefault(num, 0) + 1);
+            }
+        }
+        return mapaFrequencia;
+    }
+
+    private HashMap<Integer, Integer> ordenarPorFrequencia(HashMap<Integer, Integer> mapa) {
+        return mapa.entrySet().stream()
+                .sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
+    }
+
 
     //JTABLE
-    public void setValoresTable(JTable jtable) {
+    public void setValoresListarTable(JTable jtable) {
         DefaultTableModel tableModel = (DefaultTableModel) jtable.getModel();
         for (Aposta aposta : listaApostas) {
             String[] lista = {aposta.getRegistro() + "", aposta.getNumeros(), aposta.getNome(), aposta.getCpf()};
             tableModel.addRow(lista);
+        }
+    }
+
+    //USO PARA CENTRALIZAR ITENS TABELA
+    public void centralizarConteudoTabela(JTable jTable) {
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+        renderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+        
+        TableColumnModel columnModel = jTable.getColumnModel();
+        int columns = columnModel.getColumnCount();
+        
+        for (int i = 0; i < columns; i++) {
+            columnModel.getColumn(i).setCellRenderer(renderer);
         }
     }
 

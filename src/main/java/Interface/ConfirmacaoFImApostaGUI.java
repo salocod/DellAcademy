@@ -109,7 +109,7 @@ public class ConfirmacaoFImApostaGUI extends javax.swing.JFrame {
     private void jbtProsseguirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtProsseguirActionPerformed
         setVisible(false);
         dispose();
-        janelaPrincipal.avancarFase();
+        janelaPrincipal.avancarFaseApostaParaSorteio();
     }//GEN-LAST:event_jbtProsseguirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

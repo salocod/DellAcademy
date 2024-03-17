@@ -4,6 +4,10 @@
  */
 package Interface;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumnModel;
+
 import Manage.ACMEApostas;
 import Manage.Aposta;
 import Manage.Apostador;
@@ -61,7 +65,11 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jtaListaNumerosSorteados = new javax.swing.JTextArea();
         jbtApurar = new javax.swing.JButton();
+        jbtAvancarFasePremiacao = new javax.swing.JButton();
         FasePremiacao = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableNumerosFrequencia = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 490));
@@ -297,6 +305,13 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             }
         });
 
+        jbtAvancarFasePremiacao.setText("Avancar");
+        jbtAvancarFasePremiacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtAvancarFasePremiacaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout FaseSorteioApuracaoLayout = new javax.swing.GroupLayout(FaseSorteioApuracao);
         FaseSorteioApuracao.setLayout(FaseSorteioApuracaoLayout);
         FaseSorteioApuracaoLayout.setHorizontalGroup(
@@ -311,18 +326,20 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
                         .addComponent(jLabel5)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FaseSorteioApuracaoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jbtApurar)
-                .addGap(251, 251, 251))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FaseSorteioApuracaoLayout.createSequentialGroup()
                 .addContainerGap(64, Short.MAX_VALUE)
                 .addGroup(FaseSorteioApuracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FaseSorteioApuracaoLayout.createSequentialGroup()
                         .addComponent(jbtSorteioSortear, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(219, 219, 219))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FaseSorteioApuracaoLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(FaseSorteioApuracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtAvancarFasePremiacao, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(53, 53, 53))))
+            .addGroup(FaseSorteioApuracaoLayout.createSequentialGroup()
+                .addGap(270, 270, 270)
+                .addComponent(jbtApurar)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         FaseSorteioApuracaoLayout.setVerticalGroup(
             FaseSorteioApuracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,22 +352,77 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbtApurar)
-                .addGap(76, 76, 76))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(jbtAvancarFasePremiacao)
+                .addGap(27, 27, 27))
         );
 
         cardJPanel.add(FaseSorteioApuracao, "card3");
+
+        jTableNumerosFrequencia.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Número", "Frequência"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableNumerosFrequencia.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(jTableNumerosFrequencia);
+        if (jTableNumerosFrequencia.getColumnModel().getColumnCount() > 0) {
+            jTableNumerosFrequencia.getColumnModel().getColumn(0).setResizable(false);
+            jTableNumerosFrequencia.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(212, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout FasePremiacaoLayout = new javax.swing.GroupLayout(FasePremiacao);
         FasePremiacao.setLayout(FasePremiacaoLayout);
         FasePremiacaoLayout.setHorizontalGroup(
             FasePremiacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(FasePremiacaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         FasePremiacaoLayout.setVerticalGroup(
             FasePremiacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
+            .addGroup(FasePremiacaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         cardJPanel.add(FasePremiacao, "card4");
@@ -485,7 +557,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             acme.addAposta(aposta);
             apostador.adicionarAposta(aposta);
 
-            jtaMensagensTelaInicial.append("Aposta registrada com sucesso!\n");
+            jtaMensagensTelaInicial.append("Aposta Executada: " + aposta.getNumeros() + "\n");
             jtfNumero1.setText("");
             jtfNumero2.setText("");
             jtfNumero3.setText("");
@@ -524,7 +596,14 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         jbtListar.setEnabled(true);
     }//GEN-LAST:event_jbtIniciarActionPerformed
 
-    public void avancarFase() {
+    private void jbtAvancarFasePremiacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAvancarFasePremiacaoActionPerformed
+       FaseSorteioApuracao.setVisible(false);
+       FasePremiacao.setVisible(true);
+       acme.preencherNumerosOrdenadosPorFrequencia(jTableNumerosFrequencia);
+       acme.centralizarConteudoTabela(jTableNumerosFrequencia);
+    }//GEN-LAST:event_jbtAvancarFasePremiacaoActionPerformed
+
+    public void avancarFaseApostaParaSorteio() {
         FaseAposta.setVisible(false);
         FaseSorteioApuracao.setVisible(true);
         setTitle("Fase 2: Sorteio");
@@ -542,10 +621,14 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTableNumerosFrequencia;
     private javax.swing.JButton jbtApostar;
     private javax.swing.JButton jbtApurar;
+    private javax.swing.JButton jbtAvancarFasePremiacao;
     private javax.swing.JButton jbtIniciar;
     private javax.swing.JButton jbtLimpar;
     private javax.swing.JButton jbtListar;
