@@ -77,7 +77,7 @@ public class Aposta {
         return true;
     }
     
-    public String printarAposta() {//printa os valores da aposta
+    public String getNumeros() {//printa os valores da aposta
         String retorno = "";
         for (int i : aposta) {
             if(i == 0) continue;
@@ -85,6 +85,8 @@ public class Aposta {
         }
         return retorno;
     }
+
+
     
     public String iniciarNumerosSorteados() {
         Random rand = new Random();

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Apostador {
     
+    
     private String nome;
     private String cpf;
     private ArrayList<Aposta> apostas;

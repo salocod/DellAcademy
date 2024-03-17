@@ -4,9 +4,6 @@
  */
 package Interface;
 
-import java.util.NoSuchElementException;
-import java.util.Scanner;
-
 import Manage.ACMEApostas;
 import Manage.Aposta;
 import Manage.Apostador;
@@ -38,7 +35,6 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
 
         cardJPanel = new javax.swing.JPanel();
         FaseAposta = new javax.swing.JPanel();
-        jtfNumerosApostas = new javax.swing.JTextField();
         jbtIniciar = new javax.swing.JButton();
         lbMegaSena = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -53,6 +49,11 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jbtLimpar = new javax.swing.JButton();
         jbtListar = new javax.swing.JButton();
+        jtfNumero1 = new javax.swing.JTextField();
+        jtfNumero2 = new javax.swing.JTextField();
+        jtfNumero3 = new javax.swing.JTextField();
+        jtfNumero4 = new javax.swing.JTextField();
+        jtfNumero5 = new javax.swing.JTextField();
         FaseSorteioApuracao = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jbtSorteioSortear = new javax.swing.JButton();
@@ -63,7 +64,6 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         FasePremiacao = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(600, 490));
         setMinimumSize(new java.awt.Dimension(600, 490));
 
         cardJPanel.setMaximumSize(new java.awt.Dimension(600, 490));
@@ -71,18 +71,10 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         cardJPanel.setPreferredSize(new java.awt.Dimension(600, 490));
         cardJPanel.setLayout(new java.awt.CardLayout());
 
-        FaseAposta.setMaximumSize(new java.awt.Dimension(600, 490));
-        FaseAposta.setMinimumSize(new java.awt.Dimension(600, 490));
+        FaseAposta.setMaximumSize(new java.awt.Dimension(40, 15));
+        FaseAposta.setMinimumSize(new java.awt.Dimension(40, 15));
+        FaseAposta.setName(""); // NOI18N
         FaseAposta.setPreferredSize(new java.awt.Dimension(600, 490));
-
-        jtfNumerosApostas.setEditable(false);
-        jtfNumerosApostas.setEnabled(false);
-        jtfNumerosApostas.setMaximumSize(new java.awt.Dimension(15, 24));
-        jtfNumerosApostas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfNumerosApostasActionPerformed(evt);
-            }
-        });
 
         jbtIniciar.setText("Iniciar");
         jbtIniciar.addActionListener(new java.awt.event.ActionListener() {
@@ -156,6 +148,41 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             }
         });
 
+        jtfNumero1.setEditable(false);
+        jtfNumero1.setEnabled(false);
+        jtfNumero1.setMaximumSize(new java.awt.Dimension(40, 25));
+        jtfNumero1.setMinimumSize(new java.awt.Dimension(40, 25));
+        jtfNumero1.setName(""); // NOI18N
+        jtfNumero1.setPreferredSize(new java.awt.Dimension(40, 25));
+
+        jtfNumero2.setEditable(false);
+        jtfNumero2.setEnabled(false);
+        jtfNumero2.setMaximumSize(new java.awt.Dimension(40, 25));
+        jtfNumero2.setMinimumSize(new java.awt.Dimension(40, 25));
+        jtfNumero2.setName(""); // NOI18N
+        jtfNumero2.setPreferredSize(new java.awt.Dimension(40, 25));
+
+        jtfNumero3.setEditable(false);
+        jtfNumero3.setEnabled(false);
+        jtfNumero3.setMaximumSize(new java.awt.Dimension(40, 25));
+        jtfNumero3.setMinimumSize(new java.awt.Dimension(40, 25));
+        jtfNumero3.setName(""); // NOI18N
+        jtfNumero3.setPreferredSize(new java.awt.Dimension(40, 25));
+
+        jtfNumero4.setEditable(false);
+        jtfNumero4.setEnabled(false);
+        jtfNumero4.setMaximumSize(new java.awt.Dimension(40, 25));
+        jtfNumero4.setMinimumSize(new java.awt.Dimension(40, 25));
+        jtfNumero4.setName(""); // NOI18N
+        jtfNumero4.setPreferredSize(new java.awt.Dimension(40, 25));
+
+        jtfNumero5.setEditable(false);
+        jtfNumero5.setEnabled(false);
+        jtfNumero5.setMaximumSize(new java.awt.Dimension(40, 25));
+        jtfNumero5.setMinimumSize(new java.awt.Dimension(40, 25));
+        jtfNumero5.setName(""); // NOI18N
+        jtfNumero5.setPreferredSize(new java.awt.Dimension(40, 25));
+
         javax.swing.GroupLayout FaseApostaLayout = new javax.swing.GroupLayout(FaseAposta);
         FaseAposta.setLayout(FaseApostaLayout);
         FaseApostaLayout.setHorizontalGroup(
@@ -180,9 +207,17 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
                         .addComponent(jtfCPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(FaseApostaLayout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfNumerosApostas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(13, 13, 13)
+                        .addComponent(jtfNumero1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfNumero2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfNumero3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfNumero4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfNumero5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(FaseApostaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jcbSurpresa)
                             .addComponent(jbtApostar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -210,11 +245,15 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
                     .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jtfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(FaseApostaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfNumerosApostas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfNumero2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtApostar)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jtfNumero1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfNumero3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfNumero5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfNumero4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jcbSurpresa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -330,25 +369,65 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtfNumerosApostasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNumerosApostasActionPerformed
+    private void jbtApurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtApurarActionPerformed
+        acme.apuracao(jtaListaNumerosSorteados);
+    }//GEN-LAST:event_jbtApurarActionPerformed
 
-    }//GEN-LAST:event_jtfNumerosApostasActionPerformed
+    private void jbtSorteioSortearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSorteioSortearActionPerformed
+        apostaPremiada = new Aposta();
+        apostaPremiada.iniciarNumerosSorteados();
+        acme.setApostaPremiada(apostaPremiada);
+        jtaListaNumerosSorteados.setText(apostaPremiada.iniciarNumerosSorteados());
+        jbtSorteioSortear.setEnabled(false);
+    }//GEN-LAST:event_jbtSorteioSortearActionPerformed
 
-    private void jbtIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtIniciarActionPerformed
-        jtfNumerosApostas.setEditable(true);
-        jtfNumerosApostas.setEnabled(true);
-        jtaMensagensTelaInicial.setEnabled(true);
-        jtaMensagensTelaInicial.setEnabled(true);
-        jbtApostar.setEnabled(true);
-        jcbSurpresa.setEnabled(true);
-        jbtIniciar.setEnabled(false);
-        jtfNome.setEnabled(true);
-        jtfNome.setEditable(true);
-        jtfCPF.setEnabled(true);
-        jtfCPF.setEditable(true);
-        jbtLimpar.setEnabled(true);
-        jbtListar.setEnabled(true);
-    }//GEN-LAST:event_jbtIniciarActionPerformed
+    private void jbtListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListarActionPerformed
+            new TabelaApostasGUI(acme, jbtListar);
+            jbtListar.setEnabled(false);
+    }//GEN-LAST:event_jbtListarActionPerformed
+
+    private void jbtLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtLimparActionPerformed
+        jtaMensagensTelaInicial.setText("");
+    }//GEN-LAST:event_jbtLimparActionPerformed
+
+    private void jbtSortearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSortearActionPerformed
+        new ConfirmacaoFImApostaGUI(this);
+    }//GEN-LAST:event_jbtSortearActionPerformed
+
+    private void jcbSurpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbSurpresaActionPerformed
+        if(!jtfNumero1.getText().isEmpty() ||
+            !jtfNumero2.getText().isEmpty() ||
+            !jtfNumero3.getText().isEmpty() ||
+            !jtfNumero4.getText().isEmpty() ||
+            !jtfNumero5.getText().isEmpty()) {
+            jtaMensagensTelaInicial.append("Voce ja esta fazendo uma aposta!\n");
+            jcbSurpresa.setSelected(false);
+            return;
+        }
+        if(jtfNumero1.isEnabled()) {
+            jtfNumero1.setEnabled(false);
+            jtfNumero1.setEditable(false);
+            jtfNumero2.setEnabled(false);
+            jtfNumero2.setEditable(false);
+            jtfNumero3.setEnabled(false);
+            jtfNumero3.setEditable(false);
+            jtfNumero4.setEnabled(false);
+            jtfNumero4.setEditable(false);
+            jtfNumero5.setEnabled(false);
+            jtfNumero5.setEditable(false);
+        } else {
+            jtfNumero1.setEnabled(true);
+            jtfNumero1.setEditable(true);
+            jtfNumero2.setEnabled(true);
+            jtfNumero2.setEditable(true);
+            jtfNumero3.setEnabled(true);
+            jtfNumero3.setEditable(true);
+            jtfNumero4.setEnabled(true);
+            jtfNumero4.setEditable(true);
+            jtfNumero5.setEnabled(true);
+            jtfNumero5.setEditable(true);
+        }
+    }//GEN-LAST:event_jcbSurpresaActionPerformed
 
     private void jbtApostarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtApostarActionPerformed
         if(jtfNome.getText().isEmpty() || jtfCPF.getText().isEmpty()) {
@@ -362,94 +441,88 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             Aposta a = new Aposta(jtfNome.getText(), jtfCPF.getText());
             acme.addAposta(a);
             apostador.adicionarAposta(a);
-            jtaMensagensTelaInicial.append("Aposta surpresa!\n" +
-                                           "Numeros: " + a.printarAposta() + "\n");
+            jtaMensagensTelaInicial.append("Aposta Executada: " + a.getNumeros() + "\n");
 
-            jcbSurpresa.setSelected(false);
-            jtfNome.setText("");
-            jtfCPF.setText("");
-            jtfNumerosApostas.setEnabled(true);
-            jtfNumerosApostas.setEditable(true);
             jbtSortear.setEnabled(true);
             return;
         }
 
-        try (Scanner sc = new Scanner(jtfNumerosApostas.getText().trim())) {
-            if(jtfNumerosApostas.getText().length() < 9) throw new NoSuchElementException();
-            int[] aposta = new int[5];
-            for (int i = 0; i < 5; i++) {
-                aposta[i] = sc.nextInt();
-                if(aposta[i] < 1 || aposta[i] > 50) throw new NoSuchElementException();
-            }
-            if(sc.hasNextInt()) throw new NoSuchElementException();
-
-      
-        Aposta a = new Aposta(apostador.getNome(), apostador.getCpf(), aposta);
-      
-        if(acme.addAposta(a)) {
-                    apostador.adicionarAposta(a);
-                    jtaMensagensTelaInicial.append("Aposta registrada.\n");
-                    jbtSortear.setEnabled(true);
-        } else {
-                    jtaMensagensTelaInicial.append("Falha ao adicionar a aposta!\n");
+        if(jtfNumero1.getText().isEmpty() ||
+            jtfNumero2.getText().isEmpty() ||
+            jtfNumero3.getText().isEmpty() ||
+            jtfNumero4.getText().isEmpty() ||
+            jtfNumero5.getText().isEmpty()) {
+            jtaMensagensTelaInicial.append("Voce precisa inserir todos os numeros para apostar!\n");
+            return;
         }
 
-        } catch (NoSuchElementException e) {
-            jtaMensagensTelaInicial.append("Falha! (Insira 5 numeros naturais menores que 50)\n");
-            jtfNumerosApostas.setText("");
-        } catch (Exception e) {
+        String[] lista = {jtfNumero1.getText(),
+            jtfNumero2.getText(),
+            jtfNumero3.getText(),
+            jtfNumero4.getText(),
+            jtfNumero5.getText()};
+
+        if(!acme.conferirStrings(lista))  {
+            jtaMensagensTelaInicial.append("Todos os numeros precisam ser diferentes!\n");
+            return;
+        }
+
+        try {
+            int n1 = Integer.parseInt(jtfNumero1.getText());
+            int n2 = Integer.parseInt(jtfNumero2.getText());
+            int n3 = Integer.parseInt(jtfNumero3.getText());
+            int n4 = Integer.parseInt(jtfNumero4.getText());
+            int n5 = Integer.parseInt(jtfNumero5.getText());
+
+            if(n1 > 50 || n1 < 1 || n2 > 50 || n2 < 1 ||
+                n3 > 50 || n3 < 1 || n4 > 50 || n4 < 1 ||
+                n5 > 50 || n5 < 1) throw new NumberFormatException();
+
+            int[] vetor = {n1, n2, n3, n4 , n5};
+
+            Aposta aposta = new Aposta(jtfNome.getText(), jtfCPF.getText(), vetor);
+
+            acme.addAposta(aposta);
+            apostador.adicionarAposta(aposta);
+
+            jtaMensagensTelaInicial.append("Aposta registrada com sucesso!\n");
+            jtfNumero1.setText("");
+            jtfNumero2.setText("");
+            jtfNumero3.setText("");
+            jtfNumero4.setText("");
+            jtfNumero5.setText("");
+
+        } catch(NumberFormatException e) {
+            jtaMensagensTelaInicial.append("Apenas numeros naturais entre 1 e 50!\n");
+        } catch(Exception e) {
             e.printStackTrace();
         }
 
-        jtfNome.setText("");
-        jtfCPF.setText("");
-        jtfNumerosApostas.setEnabled(true);
-        jtfNumerosApostas.setEditable(true);
-        jtfNumerosApostas.setText("");
-        jcbSurpresa.setSelected(false);
-        
     }//GEN-LAST:event_jbtApostarActionPerformed
 
-    private void jbtSortearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSortearActionPerformed
-        new ConfirmacaoFImApostaGUI(this);
-    }//GEN-LAST:event_jbtSortearActionPerformed
-
-    private void jcbSurpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbSurpresaActionPerformed
-        if(!jtfNumerosApostas.getText().isEmpty()) {
-            jtaMensagensTelaInicial.append("Voce ja esta fazendo uma aposta!\n");
-            jcbSurpresa.setSelected(false);
-            return;
-        }
-        
-
-        if(jtfNumerosApostas.isEnabled()) {
-        jtfNumerosApostas.setEnabled(false);
-        jtfNumerosApostas.setEditable(false);
-        } else {
-        jtfNumerosApostas.setEnabled(true);
-        jtfNumerosApostas.setEditable(true);
-        }
-    }//GEN-LAST:event_jcbSurpresaActionPerformed
-
-    private void jbtLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtLimparActionPerformed
-        jtaMensagensTelaInicial.setText("");
-    }//GEN-LAST:event_jbtLimparActionPerformed
-
-    private void jbtListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListarActionPerformed
-        jtaMensagensTelaInicial.setText(acme.listarApostas());
-    }//GEN-LAST:event_jbtListarActionPerformed
-
-    private void jbtSorteioSortearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSorteioSortearActionPerformed
-        apostaPremiada = new Aposta();
-        apostaPremiada.iniciarNumerosSorteados();
-        acme.setApostaPremiada(apostaPremiada);
-        jtaListaNumerosSorteados.setText(apostaPremiada.iniciarNumerosSorteados());
-        jbtSorteioSortear.setEnabled(false);
-    }//GEN-LAST:event_jbtSorteioSortearActionPerformed
-
-    private void jbtApurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtApurarActionPerformed
-        acme.apuracao(jtaListaNumerosSorteados);
-    }//GEN-LAST:event_jbtApurarActionPerformed
+    private void jbtIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtIniciarActionPerformed
+        jtfNumero1.setEnabled(true);
+        jtfNumero1.setEditable(true);
+        jtfNumero2.setEnabled(true);
+        jtfNumero2.setEditable(true);
+        jtfNumero3.setEnabled(true);
+        jtfNumero3.setEditable(true);
+        jtfNumero4.setEnabled(true);
+        jtfNumero4.setEditable(true);
+        jtfNumero5.setEnabled(true);
+        jtfNumero5.setEditable(true);
+        jtaMensagensTelaInicial.setEnabled(true);
+        jtaMensagensTelaInicial.setEnabled(true);
+        jbtApostar.setEnabled(true);
+        jcbSurpresa.setEnabled(true);
+        jbtIniciar.setEnabled(false);
+        jtfNome.setEnabled(true);
+        jtfNome.setEditable(true);
+        jtfCPF.setEnabled(true);
+        jtfCPF.setEditable(true);
+        jbtLimpar.setEnabled(true);
+        jbtListar.setEnabled(true);
+    }//GEN-LAST:event_jbtIniciarActionPerformed
 
     public void avancarFase() {
         FaseAposta.setVisible(false);
@@ -483,7 +556,11 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
     private javax.swing.JTextArea jtaMensagensTelaInicial;
     private javax.swing.JTextField jtfCPF;
     private javax.swing.JTextField jtfNome;
-    private javax.swing.JTextField jtfNumerosApostas;
+    private javax.swing.JTextField jtfNumero1;
+    private javax.swing.JTextField jtfNumero2;
+    private javax.swing.JTextField jtfNumero3;
+    private javax.swing.JTextField jtfNumero4;
+    private javax.swing.JTextField jtfNumero5;
     private javax.swing.JLabel lbMegaSena;
     // End of variables declaration//GEN-END:variables
 }
