@@ -4,10 +4,6 @@
  */
 package Interface;
 
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableColumnModel;
-
 import Manage.ACMEApostas;
 import Manage.Aposta;
 import Manage.Apostador;
@@ -369,6 +365,8 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
                 "Número", "Frequência"
             }
         ) {
+            
+            @SuppressWarnings("rawtypes")
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.Integer.class
             };
@@ -376,6 +374,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
                 false, false
             };
 
+            @SuppressWarnings({ "rawtypes", "unchecked" })
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
