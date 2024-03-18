@@ -5,9 +5,10 @@
 package Interface;
 
 import Manage.ACMEApostas;
-import Manage.Aposta;
-import Manage.Apostador;
 import Manage.Utils;
+import Objetos.Aposta;
+import Objetos.Apostador;
+
 import javax.swing.JOptionPane;
 
 
