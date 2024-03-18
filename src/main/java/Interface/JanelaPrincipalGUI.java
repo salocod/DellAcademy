@@ -421,21 +421,22 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel7)
-                                        .addGap(81, 81, 81)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGap(22, 22, 22)
+                                                .addGap(81, 81, 81)
+                                                .addComponent(jLabel4))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGap(32, 32, 32)
                                                 .addComponent(JLableQtdVencedores, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel5)
                                         .addGap(66, 66, 66)
-                                        .addComponent(JLableQtdRodadas, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)))
+                                        .addComponent(JLableQtdRodadas, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(300, 300, 300)
                         .addComponent(jbtListarApostasApuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -452,15 +453,15 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(JLableQtdVencedores))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5)
                     .addComponent(JLableQtdRodadas))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -585,6 +586,8 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             acme.apuracao();
             acme.preencherApostasVencedoras(jTableApostasVencedoras, JLableQtdVencedores);
             acme.preencherNumerosSorteados(jTableNumeroRodadas, JLableQtdRodadas);
+            Utils.centralizarConteudoTabela(jTableApostasVencedoras);
+            Utils.centralizarConteudoTabela(jTableNumeroRodadas);
             Utils.preencherNumerosOrdenadosPorFrequencia(jTableNumerosFrequencia, acme.getListaVetores());
         }
     }//GEN-LAST:event_jbtSortearActionPerformed
@@ -636,7 +639,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             Aposta a = new Aposta(jtfNome.getText(), jtfCPF.getText());
             acme.addAposta(a);
             apostador.adicionarAposta(a);
-            jtaMensagensTelaInicial.append("Aposta Executada: " + a.getNumeros() + "\n");
+            jtaMensagensTelaInicial.append("Aposta " + a.getRegistro() + ": " + a.getNumeros() + "\n");
 
             jbtSortear.setEnabled(true);
             return;
@@ -680,7 +683,8 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             acme.addAposta(aposta);
             apostador.adicionarAposta(aposta);
 
-            jtaMensagensTelaInicial.append("Aposta Executada: " + aposta.getNumeros() + "\n");
+            jtaMensagensTelaInicial.append("Aposta " + aposta.getRegistro() + ": " + aposta.getNumeros() + "\n");
+            jbtSortear.setEnabled(true);
             jtfNumero1.setText("");
             jtfNumero2.setText("");
             jtfNumero3.setText("");
@@ -724,6 +728,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
        FasePremiacao.setVisible(true);
        Utils.preencherNumerosOrdenadosPorFrequencia(jTableVencedores, acme.getListaVetores());
        Utils.centralizarConteudoTabela(jTableVencedores);
+        setTitle("Fase 4: Premiacao");
     }//GEN-LAST:event_jbtAvancarFasePremiacaoActionPerformed
 
     private void jbtListarApostasApuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListarApostasApuracaoActionPerformed

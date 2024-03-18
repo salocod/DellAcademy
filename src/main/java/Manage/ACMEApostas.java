@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -42,9 +43,7 @@ public class ACMEApostas {
     }
     
     public void apuracao() {
-        if(apostaPremiada.getContador()>30) {
-            return;
-        }
+        if(apostaPremiada.getContador()>=30) return;
         for (Aposta aposta : listaApostas) {
             if(conferirPremiada(aposta.getVetor())) {
                 listaVencedores.add(aposta);
@@ -61,13 +60,17 @@ public class ACMEApostas {
         for (int i = 0; i < 5; i++) {
             model.addRow(new Object[]{apostaPremiada.getVetor()[i], 1});
         }
-        for (int i = 4; i < apostaPremiada.getContadorAux(); i++) {//----------------- ERRO AQUI
-            model.addRow(new Object[]{apostaPremiada.getVetor()[i], i-3});
+        for (int i = 5; i < apostaPremiada.getContadorAux(); i++) {//----------------- ERRO AQUI
+            model.addRow(new Object[]{apostaPremiada.getVetor()[i], i-4});
         }
-        jLabel.setText("Rodadas: " + apostaPremiada.getContadorAux());
+        jLabel.setText("Rodadas: " + (apostaPremiada.getContadorAux()-4));
     }
 
     public void preencherApostasVencedoras(JTable jtable, JLabel jLabel) {
+        if(listaVencedores.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nenhum apostador acertou os numeros!");
+            return;
+        }
         DefaultTableModel tableModel = (DefaultTableModel) jtable.getModel();
         for (Aposta aposta : listaVencedores) {
             String[] lista = {aposta.getRegistro() + "", aposta.getNumeros(), aposta.getNome(), aposta.getCpf()};
