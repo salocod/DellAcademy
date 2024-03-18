@@ -61,7 +61,7 @@ public class ACMEApostas {
             model.addRow(new Object[]{apostaPremiada.getVetor()[i], 1});
         }
         for (int i = 5; i < apostaPremiada.getContadorAux(); i++) {//----------------- ERRO AQUI
-            model.addRow(new Object[]{apostaPremiada.getVetor()[i], i-4});
+            model.addRow(new Object[]{apostaPremiada.getVetor()[i], i-3});
         }
         jLabel.setText("Rodadas: " + (apostaPremiada.getContadorAux()-4));
     }
@@ -69,10 +69,12 @@ public class ACMEApostas {
     public void preencherApostasVencedoras(JTable jtable, JLabel jLabel) {
         if(listaVencedores.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Apuracao executada!\nNenhum apostador acertou os numeros!");
+            jtable.setEnabled(false);
             return;
         }
         DefaultTableModel tableModel = (DefaultTableModel) jtable.getModel();
-        JOptionPane.showMessageDialog(null, "Apuracao executada!\nHouveram " + listaVencedores.size() + " vencedor(es)!");
+        if(listaVencedores.size()>1) JOptionPane.showMessageDialog(null, "Apuracao executada!\nHouve " + listaVencedores.size() + " vencedores!");
+        else if(listaVencedores.size()==1) JOptionPane.showMessageDialog(null, "Apuracao executada!\nHouve 1 vencedor!");
         listaVencedores.sort((a1, a2) -> a1.getNome().compareTo(a2.getNome()));
         for (Aposta aposta : listaVencedores) {
             String[] lista = {aposta.getRegistro() + "", aposta.getNumeros(), aposta.getNome(), aposta.getCpf()};
