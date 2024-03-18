@@ -667,6 +667,10 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListarActionPerformed
+            if(acme.getListaAposta().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Nenhuma aposta registrada!");
+                return;
+            }
             new TabelaApostasGUI(acme, jbtListar);
             jbtListar.setEnabled(false);
     }//GEN-LAST:event_jbtListarActionPerformed
@@ -817,6 +821,10 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
        FaseSorteioApuracao.setVisible(false);
        FasePremiacao.setVisible(true);
        setTitle("Fase 4: Premiacao");
+       if(acme.getListaVencedores().isEmpty()) {
+           JOptionPane.showMessageDialog(null, "Nenhum apostador ganhou a MegaSena!");
+           return;
+       }
        Utils.preencherTabelaVencedores(jTabelaVencedores, acme.getListaVencedores());
        Utils.centralizarConteudoTabela(jTabelaVencedores);
     }//GEN-LAST:event_jbtAvancarFasePremiacaoActionPerformed
@@ -839,9 +847,10 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             acme.apuracao();
             acme.preencherApostasVencedoras(jTableApostasVencedoras, JLableQtdVencedores);
             acme.preencherNumerosSorteados(jTableNumeroRodadas, JLableQtdRodadas);
+            Utils.preencherNumerosOrdenadosPorFrequencia(jTableNumerosFrequencia, acme.getListaVetores());
             Utils.centralizarConteudoTabela(jTableApostasVencedoras);
             Utils.centralizarConteudoTabela(jTableNumeroRodadas);
-            Utils.preencherNumerosOrdenadosPorFrequencia(jTableNumerosFrequencia, acme.getListaVetores());
+            Utils.centralizarConteudoTabela(jTableNumerosFrequencia);
     }//GEN-LAST:event_jbtSortearSorteioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
