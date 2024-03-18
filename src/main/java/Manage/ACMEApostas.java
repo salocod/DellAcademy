@@ -61,8 +61,8 @@ public class ACMEApostas {
         for (int i = 0; i < 5; i++) {
             model.addRow(new Object[]{apostaPremiada.getVetor()[i], 1});
         }
-        for (int i = 4; i < apostaPremiada.getContadorAux(); i++) {
-            model.addRow(new Object[]{apostaPremiada.getVetor()[i], i+1});
+        for (int i = 4; i < apostaPremiada.getContadorAux(); i++) {//----------------- ERRO AQUI
+            model.addRow(new Object[]{apostaPremiada.getVetor()[i], i-3});
         }
         jLabel.setText("Rodadas: " + apostaPremiada.getContadorAux());
     }
@@ -119,9 +119,11 @@ public class ACMEApostas {
     }
 
     public String getListaPremiada() {
-        String retorn ="";
+        String retorn = "";
+        int contador1 = 1;
         for (int i : apostaPremiada.getVetor()) {
-            retorn += i;
+            retorn += contador1 + ": " + i + "\n";
+            contador1++;
         }
         return retorn;
     }

@@ -64,14 +64,14 @@ public class Aposta {
 
     public void gerarNovoNumeroSorteado() {
         int random;
-        if(contador>=30) return;
-        contador++;
-        contadorAux = contador;
+        if(contador>29) return;
         do {
             random = new Random().nextInt(1, 50);
         } while(numeros.contains(random));
             numeros.add(random);
             aposta[contador] = random;
+            contador++;
+            contadorAux = contador;
     }
 
     public void setRegistro(int registro) {this.registro=registro;}
