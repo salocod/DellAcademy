@@ -74,6 +74,15 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         jbtSortearSorteio = new javax.swing.JButton();
         FasePremiacao = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        jlbPremiacao = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTabelaVencedores = new javax.swing.JTable();
+        jLabel11 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 490));
@@ -307,13 +316,14 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
                 "Numero", "Rodada"
             }
         ) {
+            @SuppressWarnings({ "rawtypes"})
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false
             };
-
+            @SuppressWarnings({ "rawtypes", "unchecked" })
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
@@ -323,6 +333,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             }
         });
         jTableNumeroRodadas.setEnabled(false);
+        jTableNumeroRodadas.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(jTableNumeroRodadas);
         if (jTableNumeroRodadas.getColumnModel().getColumnCount() > 0) {
             jTableNumeroRodadas.getColumnModel().getColumn(0).setResizable(false);
@@ -337,13 +348,14 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
                 "Aposta", "Numeros", "Nome", "CPF"
             }
         ) {
+            @SuppressWarnings({ "rawtypes"})
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, true, true
             };
-
+            @SuppressWarnings({ "rawtypes", "unchecked" })
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
@@ -374,13 +386,14 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
                 "Número", "Frequência"
             }
         ) {
+            @SuppressWarnings({ "rawtypes"})
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false
             };
-
+            @SuppressWarnings({ "rawtypes", "unchecked" })
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
@@ -504,22 +517,126 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
 
         cardJPanel.add(FaseSorteioApuracao, "card3");
 
+        jlbPremiacao.setFont(new java.awt.Font("Segoe UI Symbol", 1, 40)); // NOI18N
+        jlbPremiacao.setText("Premio:");
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dell.png"))); // NOI18N
+        jLabel8.setText("jLabel8");
+        jLabel8.setMaximumSize(new java.awt.Dimension(50, 50));
+        jLabel8.setMinimumSize(new java.awt.Dimension(50, 50));
+        jLabel8.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        jLabel4.setText("Nicolas Fonseca Docolas");
+
+        jLabel9.setText("Trabalho de desenvolvimento em Java");
+
+        jLabel10.setText("PUCRS - 2024");
+
+        jTabelaVencedores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Vencedor", "Premio"
+            }
+        ) {
+            @SuppressWarnings("rawtypes")
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            @SuppressWarnings({ "rawtypes", "unchecked" })
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTabelaVencedores.setEnabled(false);
+        jTabelaVencedores.getTableHeader().setReorderingAllowed(false);
+        jScrollPane7.setViewportView(jTabelaVencedores);
+        if (jTabelaVencedores.getColumnModel().getColumnCount() > 0) {
+            jTabelaVencedores.getColumnModel().getColumn(0).setResizable(false);
+            jTabelaVencedores.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel11.setText("R$100.000.000,00");
+
+        jButton1.setText("Finalizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 588, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(133, 133, 133)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel10))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(166, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(231, 231, 231))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(155, 155, 155))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(241, 241, 241))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jlbPremiacao)
+                        .addGap(218, 218, 218))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 478, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jlbPremiacao, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout FasePremiacaoLayout = new javax.swing.GroupLayout(FasePremiacao);
         FasePremiacao.setLayout(FasePremiacaoLayout);
         FasePremiacaoLayout.setHorizontalGroup(
             FasePremiacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FasePremiacaoLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FasePremiacaoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -698,7 +815,9 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
     private void jbtAvancarFasePremiacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAvancarFasePremiacaoActionPerformed
        FaseSorteioApuracao.setVisible(false);
        FasePremiacao.setVisible(true);
-        setTitle("Fase 4: Premiacao");
+       setTitle("Fase 4: Premiacao");
+       Utils.preencherTabelaVencedores(jTabelaVencedores, acme.getListaVencedores());
+       Utils.centralizarConteudoTabela(jTabelaVencedores);
     }//GEN-LAST:event_jbtAvancarFasePremiacaoActionPerformed
 
     private void jbtListarApostasApuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListarApostasApuracaoActionPerformed
@@ -724,6 +843,11 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             Utils.preencherNumerosOrdenadosPorFrequencia(jTableNumerosFrequencia, acme.getListaVetores());
     }//GEN-LAST:event_jbtSortearSorteioActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JOptionPane.showMessageDialog(null, "Muito obrigado por participar da minha Mega-Sena!\nEspero que tenha gostado");
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void avancarFaseApostaParaSorteio() {
         FaseAposta.setVisible(false);
         FaseSorteioApuracao.setVisible(true);
@@ -739,18 +863,26 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
     private javax.swing.JLabel JLableQtdRodadas;
     private javax.swing.JLabel JLableQtdVencedores;
     private javax.swing.JPanel cardJPanel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTable jTabelaVencedores;
     private javax.swing.JTable jTableApostasVencedoras;
     private javax.swing.JTable jTableNumeroRodadas;
     private javax.swing.JTable jTableNumerosFrequencia;
@@ -763,6 +895,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
     private javax.swing.JButton jbtSortear;
     private javax.swing.JButton jbtSortearSorteio;
     private javax.swing.JCheckBox jcbSurpresa;
+    private javax.swing.JLabel jlbPremiacao;
     private javax.swing.JLabel jlbSorteio;
     private javax.swing.JTextArea jtaMensagensTelaInicial;
     private javax.swing.JTextField jtfCPF;

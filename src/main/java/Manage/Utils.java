@@ -34,6 +34,15 @@ public class Utils {
         }
     }
     
+    public static void preencherTabelaVencedores(JTable jtable, ArrayList<Aposta> listaVencedores) {
+        if(listaVencedores.isEmpty()) return;
+        listaVencedores.sort((a1, a2) -> a1.getNome().compareTo(a2.getNome()));
+        DefaultTableModel model = (DefaultTableModel) jtable.getModel();
+        for (Aposta aposta : listaVencedores) {
+            model.addRow(new Object[]{aposta.getNome(), "R$" + ((int)100_000_000/listaVencedores.size() + ",00")});
+        }
+    }
+
     public static void preencherNumerosOrdenadosPorFrequencia(JTable jtable, ArrayList<int[]> lista) {
         HashMap<Integer, Integer> mapaOrdenado = ordenarPorFrequencia(obterMapaFrequencia(lista));
 
