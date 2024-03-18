@@ -1,8 +1,11 @@
 package Manage;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -68,10 +71,12 @@ public class ACMEApostas {
 
     public void preencherApostasVencedoras(JTable jtable, JLabel jLabel) {
         if(listaVencedores.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Nenhum apostador acertou os numeros!");
+            JOptionPane.showMessageDialog(null, "Apuracao executada!\nNenhum apostador acertou os numeros!");
             return;
         }
         DefaultTableModel tableModel = (DefaultTableModel) jtable.getModel();
+        JOptionPane.showMessageDialog(null, "Apuracao executada!\nHouveram " + listaVencedores.size() + " vencedor(es)!");
+        listaVencedores.sort((a1, a2) -> a1.getNome().compareTo(a2.getNome()));
         for (Aposta aposta : listaVencedores) {
             String[] lista = {aposta.getRegistro() + "", aposta.getNumeros(), aposta.getNome(), aposta.getCpf()};
             tableModel.addRow(lista);

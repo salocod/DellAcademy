@@ -20,6 +20,7 @@ public class TabelaApostasGUI extends javax.swing.JFrame {
         this.jbt = jbt;
         initComponents();
         setVisible(true);
+        setTitle("Lista de Apostas");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         acmeApostas.setValoresListarTable(jTable);
