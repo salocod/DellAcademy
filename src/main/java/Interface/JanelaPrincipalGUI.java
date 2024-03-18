@@ -4,12 +4,12 @@
  */
 package Interface;
 
+import javax.swing.JOptionPane;
+
 import Manage.ACMEApostas;
 import Manage.Utils;
 import Objetos.Aposta;
 import Objetos.Apostador;
-
-import javax.swing.JOptionPane;
 
 
 public class JanelaPrincipalGUI extends javax.swing.JFrame {
@@ -95,7 +95,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
 
         FaseAposta.setMaximumSize(new java.awt.Dimension(40, 15));
         FaseAposta.setMinimumSize(new java.awt.Dimension(40, 15));
-        FaseAposta.setName(""); // NOI18N
+        FaseAposta.setName(""); 
         FaseAposta.setPreferredSize(new java.awt.Dimension(600, 490));
 
         jbtIniciar.setText("Iniciar");
@@ -105,7 +105,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             }
         });
 
-        lbMegaSena.setFont(new java.awt.Font("Segoe UI Symbol", 1, 36)); // NOI18N
+        lbMegaSena.setFont(new java.awt.Font("Segoe UI Symbol", 1, 36)); 
         lbMegaSena.setText("MegaSena");
 
         jtaMensagensTelaInicial.setEditable(false);
@@ -118,27 +118,15 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
 
         jbtApostar.setText("Apostar");
         jbtApostar.setEnabled(false);
-        jbtApostar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtApostarActionPerformed(evt);
-            }
-        });
+        jbtApostar.addActionListener(evt -> jbtApostarActionPerformed(evt));
 
         jcbSurpresa.setText("Surpresa");
         jcbSurpresa.setEnabled(false);
-        jcbSurpresa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbSurpresaActionPerformed(evt);
-            }
-        });
+        jcbSurpresa.addActionListener(evt -> jcbSurpresaActionPerformed(evt));
 
         jbtSortear.setText("Sortear");
         jbtSortear.setEnabled(false);
-        jbtSortear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtSortearActionPerformed(evt);
-            }
-        });
+        jbtSortear.addActionListener(evt -> jbtSortearActionPerformed(evt));
 
         jLabel1.setText("Nome:");
 
@@ -156,11 +144,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
 
         jbtLimpar.setText("Limpar");
         jbtLimpar.setEnabled(false);
-        jbtLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtLimparActionPerformed(evt);
-            }
-        });
+        jbtLimpar.addActionListener(evt -> jbtLimparActionPerformed(evt));
 
         jbtListar.setText("Listar");
         jbtListar.setEnabled(false);
@@ -174,35 +158,35 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         jtfNumero1.setEnabled(false);
         jtfNumero1.setMaximumSize(new java.awt.Dimension(40, 25));
         jtfNumero1.setMinimumSize(new java.awt.Dimension(40, 25));
-        jtfNumero1.setName(""); // NOI18N
+        jtfNumero1.setName(""); 
         jtfNumero1.setPreferredSize(new java.awt.Dimension(40, 25));
 
         jtfNumero2.setEditable(false);
         jtfNumero2.setEnabled(false);
         jtfNumero2.setMaximumSize(new java.awt.Dimension(40, 25));
         jtfNumero2.setMinimumSize(new java.awt.Dimension(40, 25));
-        jtfNumero2.setName(""); // NOI18N
+        jtfNumero2.setName(""); 
         jtfNumero2.setPreferredSize(new java.awt.Dimension(40, 25));
 
         jtfNumero3.setEditable(false);
         jtfNumero3.setEnabled(false);
         jtfNumero3.setMaximumSize(new java.awt.Dimension(40, 25));
         jtfNumero3.setMinimumSize(new java.awt.Dimension(40, 25));
-        jtfNumero3.setName(""); // NOI18N
+        jtfNumero3.setName(""); 
         jtfNumero3.setPreferredSize(new java.awt.Dimension(40, 25));
 
         jtfNumero4.setEditable(false);
         jtfNumero4.setEnabled(false);
         jtfNumero4.setMaximumSize(new java.awt.Dimension(40, 25));
         jtfNumero4.setMinimumSize(new java.awt.Dimension(40, 25));
-        jtfNumero4.setName(""); // NOI18N
+        jtfNumero4.setName(""); 
         jtfNumero4.setPreferredSize(new java.awt.Dimension(40, 25));
 
         jtfNumero5.setEditable(false);
         jtfNumero5.setEnabled(false);
         jtfNumero5.setMaximumSize(new java.awt.Dimension(40, 25));
         jtfNumero5.setMinimumSize(new java.awt.Dimension(40, 25));
-        jtfNumero5.setName(""); // NOI18N
+        jtfNumero5.setName(""); 
         jtfNumero5.setPreferredSize(new java.awt.Dimension(40, 25));
 
         javax.swing.GroupLayout FaseApostaLayout = new javax.swing.GroupLayout(FaseAposta);
@@ -293,7 +277,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         FaseSorteioApuracao.setMaximumSize(new java.awt.Dimension(600, 490));
         FaseSorteioApuracao.setMinimumSize(new java.awt.Dimension(600, 490));
 
-        jlbSorteio.setFont(new java.awt.Font("Segoe UI Symbol", 1, 36)); // NOI18N
+        jlbSorteio.setFont(new java.awt.Font("Segoe UI Symbol", 1, 36)); 
         jlbSorteio.setText("Sorteio");
 
         jbtAvancarFasePremiacao.setText("Premiação");
@@ -301,11 +285,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         jbtAvancarFasePremiacao.setMaximumSize(new java.awt.Dimension(70, 25));
         jbtAvancarFasePremiacao.setMinimumSize(new java.awt.Dimension(70, 25));
         jbtAvancarFasePremiacao.setPreferredSize(new java.awt.Dimension(70, 25));
-        jbtAvancarFasePremiacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtAvancarFasePremiacaoActionPerformed(evt);
-            }
-        });
+        jbtAvancarFasePremiacao.addActionListener(e -> jbtAvancarFasePremiacaoActionPerformed(e));
 
         jLabel5.setText("Sorteados:");
 
@@ -427,11 +407,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         });
 
         jbtSortearSorteio.setText("Sortear");
-        jbtSortearSorteio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtSortearSorteioActionPerformed(evt);
-            }
-        });
+        jbtSortearSorteio.addActionListener(evt -> jbtSortearSorteioActionPerformed(evt));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -518,10 +494,10 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
 
         cardJPanel.add(FaseSorteioApuracao, "card3");
 
-        jlbPremiacao.setFont(new java.awt.Font("Segoe UI Symbol", 1, 40)); // NOI18N
+        jlbPremiacao.setFont(new java.awt.Font("Segoe UI Symbol", 1, 40)); 
         jlbPremiacao.setText("Premio:");
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dell.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dell.png"))); 
         jLabel8.setText("jLabel8");
         jLabel8.setMaximumSize(new java.awt.Dimension(50, 50));
         jLabel8.setMinimumSize(new java.awt.Dimension(50, 50));
@@ -566,7 +542,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             jTabelaVencedores.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); 
         jLabel11.setText("R$100.000.000,00");
 
         jButton1.setText("Finalizar");
@@ -664,29 +640,30 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void jbtListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListarActionPerformed
-            if(acme.getListaAposta().isEmpty()) {
+    private void jbtListarActionPerformed(java.awt.event.ActionEvent evt) {
+                   if(acme.getListaAposta().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Nenhuma aposta registrada!");
                 return;
             }
             new TabelaApostasGUI(acme, jbtListar);
             jbtListar.setEnabled(false);
-    }//GEN-LAST:event_jbtListarActionPerformed
+    }
 
-    private void jbtLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtLimparActionPerformed
-        jtaMensagensTelaInicial.setText("");
-    }//GEN-LAST:event_jbtLimparActionPerformed
+    private void jbtLimparActionPerformed(java.awt.event.ActionEvent evt) {
+               jtaMensagensTelaInicial.setText("");
+    }
 
-    private void jbtSortearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSortearActionPerformed
-        int result = JOptionPane.showConfirmDialog(null, "Voce deseja iniciar a fase de sorteio?", "Confirmacao", JOptionPane.YES_NO_OPTION);
+    private void jbtSortearActionPerformed(java.awt.event.ActionEvent evt) {
+                int result = JOptionPane.showConfirmDialog(null, "Voce deseja iniciar a fase de sorteio?", "Confirmacao", JOptionPane.YES_NO_OPTION);
         if(result == JOptionPane.YES_OPTION) {
             avancarFaseApostaParaSorteio();
         }
-    }//GEN-LAST:event_jbtSortearActionPerformed
+    }
 
-    private void jcbSurpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbSurpresaActionPerformed
+    private void jcbSurpresaActionPerformed(java.awt.event.ActionEvent evt) {
+
         if(!jtfNumero1.getText().isEmpty() ||
             !jtfNumero2.getText().isEmpty() ||
             !jtfNumero3.getText().isEmpty() ||
@@ -719,10 +696,10 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             jtfNumero5.setEnabled(true);
             jtfNumero5.setEditable(true);
         }
-    }//GEN-LAST:event_jcbSurpresaActionPerformed
+    }//
 
-    private void jbtApostarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtApostarActionPerformed
-        if(jtfNome.getText().isEmpty() || jtfCPF.getText().isEmpty()) {
+    private void jbtApostarActionPerformed(java.awt.event.ActionEvent evt) {
+                if(jtfNome.getText().isEmpty() || jtfCPF.getText().isEmpty()) {
             jtaMensagensTelaInicial.append("Voce precisa inserir um nome e um cpf!\n");
             return;
         }
@@ -791,10 +768,10 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             e.printStackTrace();
         }
 
-    }//GEN-LAST:event_jbtApostarActionPerformed
+    }
 
-    private void jbtIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtIniciarActionPerformed
-        jtfNumero1.setEnabled(true);
+    private void jbtIniciarActionPerformed(java.awt.event.ActionEvent evt) {
+                jtfNumero1.setEnabled(true);
         jtfNumero1.setEditable(true);
         jtfNumero2.setEnabled(true);
         jtfNumero2.setEditable(true);
@@ -815,9 +792,9 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         jtfCPF.setEditable(true);
         jbtLimpar.setEnabled(true);
         jbtListar.setEnabled(true);
-    }//GEN-LAST:event_jbtIniciarActionPerformed
+    }
 
-    private void jbtAvancarFasePremiacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAvancarFasePremiacaoActionPerformed
+    private void jbtAvancarFasePremiacaoActionPerformed(java.awt.event.ActionEvent evt) {
        FaseSorteioApuracao.setVisible(false);
        FasePremiacao.setVisible(true);
        setTitle("Fase 4: Premiacao");
@@ -827,14 +804,14 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
        }
        Utils.preencherTabelaVencedores(jTabelaVencedores, acme.getListaVencedores());
        Utils.centralizarConteudoTabela(jTabelaVencedores);
-    }//GEN-LAST:event_jbtAvancarFasePremiacaoActionPerformed
+    }
 
-    private void jbtListarApostasApuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListarApostasApuracaoActionPerformed
+    private void jbtListarApostasApuracaoActionPerformed(java.awt.event.ActionEvent evt) {
         new TabelaApostasGUI(acme, jbtListarApostasApuracao);
         jbtListarApostasApuracao.setEnabled(false);
-    }//GEN-LAST:event_jbtListarApostasApuracaoActionPerformed
+    }
 
-    private void jbtSortearSorteioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSortearSorteioActionPerformed
+    private void jbtSortearSorteioActionPerformed(java.awt.event.ActionEvent evt) {
             jbtSortearSorteio.setEnabled(false);
             jTableApostasVencedoras.setEnabled(true);
             jTableNumerosFrequencia.setEnabled(true);
@@ -851,12 +828,12 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             Utils.centralizarConteudoTabela(jTableApostasVencedoras);
             Utils.centralizarConteudoTabela(jTableNumeroRodadas);
             Utils.centralizarConteudoTabela(jTableNumerosFrequencia);
-    }//GEN-LAST:event_jbtSortearSorteioActionPerformed
+    }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JOptionPane.showMessageDialog(null, "Muito obrigado por participar da minha Mega-Sena!\nEspero que tenha gostado");
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+              JOptionPane.showMessageDialog(null, "Muito obrigado por participar da minha Mega-Sena!\nEspero que tenha gostado");
         System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
 
     public void avancarFaseApostaParaSorteio() {
         FaseAposta.setVisible(false);
@@ -864,9 +841,6 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         setTitle("Fase 2: Sorteio");
     }
 
-    
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FaseAposta;
     private javax.swing.JPanel FasePremiacao;
     private javax.swing.JPanel FaseSorteioApuracao;
@@ -916,5 +890,4 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
     private javax.swing.JTextField jtfNumero4;
     private javax.swing.JTextField jtfNumero5;
     private javax.swing.JLabel lbMegaSena;
-    // End of variables declaration//GEN-END:variables
 }
