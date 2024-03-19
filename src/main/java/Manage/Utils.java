@@ -86,6 +86,17 @@ public class Utils {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
     }
 
+    public boolean conferirStrings(String[] strings) {
+        for (int i = 0; i < strings.length; i++) {
+            for (int j = i + 1; j < strings.length; j++) {
+                if (strings[i].equals(strings[j])) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     //USO PARA CENTRALIZAR ITENS TABELA
     public void centralizarConteudoTabela(JTable jTable) {
         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();

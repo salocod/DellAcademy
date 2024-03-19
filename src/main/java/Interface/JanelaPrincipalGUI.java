@@ -11,12 +11,12 @@ import Objetos.Apostador;
 public class JanelaPrincipalGUI extends javax.swing.JFrame {
 
     private ACMEApostas acme;
-    private Utils Utils;
+    private Utils utils;
     
     public JanelaPrincipalGUI() {
         super();
         acme = new ACMEApostas();
-        Utils = new Utils(acme);
+        utils = new Utils(acme);
         iniciarComponentes();
         setResizable(false);
         setDefaultCloseOperation(3);
@@ -749,7 +749,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         jtfNumero5.getText()};
 
     //Verificador caso os numeros apostados sejam iguais
-    if(!acme.conferirStrings(lista))  {
+    if(!utils.conferirStrings(lista))  {
         jtaMensagensTelaInicial.append("Todos os numeros precisam ser diferentes!\n");
         return;
     }
@@ -822,12 +822,12 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             setTitle("Fase 3: Apuração");
             acme.setApostaPremiada(new Aposta());
             acme.apuracao();
-            Utils.preencherApostasVencedoras(jTableApostasVencedoras, JLableQtdVencedores);
-            Utils.preencherNumerosSorteados(jTableNumeroRodadas, JLableQtdRodadas);
-            Utils.preencherNumerosOrdenadosPorFrequencia(jTableNumerosFrequencia, acme.getListaVetores());
-            Utils.centralizarConteudoTabela(jTableApostasVencedoras);
-            Utils.centralizarConteudoTabela(jTableNumeroRodadas);
-            Utils.centralizarConteudoTabela(jTableNumerosFrequencia);
+            utils.preencherApostasVencedoras(jTableApostasVencedoras, JLableQtdVencedores);
+            utils.preencherNumerosSorteados(jTableNumeroRodadas, JLableQtdRodadas);
+            utils.preencherNumerosOrdenadosPorFrequencia(jTableNumerosFrequencia, acme.getListaVetores());
+            utils.centralizarConteudoTabela(jTableApostasVencedoras);
+            utils.centralizarConteudoTabela(jTableNumeroRodadas);
+            utils.centralizarConteudoTabela(jTableNumerosFrequencia);
     }
 
     //Metodo para avancar para Fase 2
@@ -848,8 +848,8 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         } 
         if(acme.getListaVencedores().size() > 1) JOptionPane.showMessageDialog(null, "Parabéns aos " + acme.getListaVencedores().size() + " vencedores!");
         else JOptionPane.showMessageDialog(null, "Parabéns ao único vencedor!");
-        Utils.preencherTabelaVencedores(jTabelaVencedores, acme.getListaVencedores());
-        Utils.centralizarConteudoTabela(jTabelaVencedores);
+        utils.preencherTabelaVencedores(jTabelaVencedores, acme.getListaVencedores());
+        utils.centralizarConteudoTabela(jTabelaVencedores);
      }
 
     //Fim do Programa

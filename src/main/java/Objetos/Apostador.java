@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Apostador {
     
-    
     private String nome, cpf;
     private ArrayList<Aposta> apostas;
     
@@ -14,9 +13,7 @@ public class Apostador {
         this.cpf = cpf;
     }
     
-    public boolean adicionarAposta(Aposta a) {
-        return apostas.add(a);
-    }
+    public boolean adicionarAposta(Aposta a) {return apostas.add(a);}
     
     public String getNome() {return nome;}
     public String getCpf() {return cpf;}

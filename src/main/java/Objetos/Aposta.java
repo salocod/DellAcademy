@@ -41,7 +41,7 @@ public class Aposta {
             do {
                 numero = new Random().nextInt(1, 50);
             } while(numeros.contains(numero));
-                aposta[contador] = i+1;
+                aposta[contador] = numero;
                 contador++;
                 contadorAux = contador;
                 numeros.add(numero);
@@ -66,6 +66,8 @@ public class Aposta {
         }
     }
 
+    //Metodo que pertence a funcao apuracao, que quando necessario, insere um novo numero randomico
+    //nao repetido na apostaPremiada.
     public void gerarNovoNumeroSorteado() {
         int random;
         if(contador>29) return;
@@ -80,7 +82,6 @@ public class Aposta {
 
     public void setRegistro(int registro) {this.registro=registro;}
     public void setContador() {this.contador = 31;}
-
 
     public int getRegistro() {return registro;}
     public int getContador() {return contador;}

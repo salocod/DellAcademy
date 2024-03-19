@@ -14,8 +14,7 @@ import Objetos.Apostador;
 public class ACMEApostas {
     
     private ArrayList<Apostador> listaApostadores;
-    private ArrayList<Aposta> listaApostas;
-    private ArrayList<Aposta> listaVencedores;
+    private ArrayList<Aposta> listaApostas, listaVencedores;
     private Aposta apostaPremiada;
     private int CONTADOR;
     private boolean entrar;
@@ -29,7 +28,7 @@ public class ACMEApostas {
     }
     
     /*
-     * Metodo que faz a verificacao para que caso 1 CPFS aposte mais de uma vez,
+     * Metodo que faz a verificacao para que caso 1 CPF aposte mais de uma vez,
      * as apostas sejam atribuidas ao mesmo apostador
      */
     public Apostador pesquisaApostador(String nome, String cpf) {
@@ -61,6 +60,7 @@ public class ACMEApostas {
         apuracao();
     }
 
+    //Metodo que confere se a aposta inserida confere com os numeros sorteados
     public boolean conferirPremiada(int[] array) {
         Set<Integer> numerosPremiados = new HashSet<>();
         for (int numero : apostaPremiada.getVetor()) {
@@ -70,17 +70,6 @@ public class ACMEApostas {
         for (int numero : array) {
             if (!numerosPremiados.contains(numero)) {
                 return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean conferirStrings(String[] strings) {
-        for (int i = 0; i < strings.length; i++) {
-            for (int j = i + 1; j < strings.length; j++) {
-                if (strings[i].equals(strings[j])) {
-                    return false;
-                }
             }
         }
         return true;
@@ -101,16 +90,6 @@ public class ACMEApostas {
             String[] lista = {aposta.getRegistro() + "", aposta.getNumeros(), aposta.getNome(), aposta.getCpf()};
             tableModel.addRow(lista);
         }
-    }
-
-    public String getListaPremiada() {
-        String retorn = "";
-        int contador1 = 1;
-        for (int i : apostaPremiada.getVetor()) {
-            retorn += contador1 + ": " + i + "\n";
-            contador1++;
-        }
-        return retorn;
     }
 
     public ArrayList<Aposta> getListaVencedores() {return listaVencedores;}
