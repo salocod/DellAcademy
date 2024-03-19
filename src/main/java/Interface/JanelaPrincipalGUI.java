@@ -635,6 +635,31 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         pack();
     }
 
+    //Botao que inicia o programa
+    private void jbtIniciarActionPerformed(java.awt.event.ActionEvent evt) {
+        jtfNumero1.setEnabled(true);
+        jtfNumero1.setEditable(true);
+        jtfNumero2.setEnabled(true);
+        jtfNumero2.setEditable(true);
+        jtfNumero3.setEnabled(true);
+        jtfNumero3.setEditable(true);
+        jtfNumero4.setEnabled(true);
+        jtfNumero4.setEditable(true);
+        jtfNumero5.setEnabled(true);
+        jtfNumero5.setEditable(true);
+        jtaMensagensTelaInicial.setEnabled(true);
+        jtaMensagensTelaInicial.setEnabled(true);
+        jbtApostar.setEnabled(true);
+        jcbSurpresa.setEnabled(true);
+        jbtIniciar.setEnabled(false);
+        jtfNome.setEnabled(true);
+        jtfNome.setEditable(true);
+        jtfCPF.setEnabled(true);
+        jtfCPF.setEditable(true);
+        jbtLimpar.setEnabled(true);
+        jbtListar.setEnabled(true);
+    }    
+
     //Listar todas apostas na Fase 1
     private void jbtListarActionPerformed(java.awt.event.ActionEvent evt) {
             if(acme.getListaAposta().isEmpty()) {
@@ -645,18 +670,12 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             jbtListar.setEnabled(false);
     }
 
+    //Limpar a saida de texto
     private void jbtLimparActionPerformed(java.awt.event.ActionEvent evt) {
                jtaMensagensTelaInicial.setText("");
     }
 
-    //Lança uma janela para fazer a confirmacao antes de ir para o sorteio
-    private void jbtSortearActionPerformed(java.awt.event.ActionEvent evt) {
-        int result = JOptionPane.showConfirmDialog(null, "Voce deseja iniciar a fase de sorteio?", "Confirmacao", JOptionPane.YES_NO_OPTION);
-        if(result == JOptionPane.YES_OPTION) avancarFaseApostaParaSorteio();
-        
-    }
-
-    //Metodo que organiza quando a aposta surpresa é ligada os outros botoes ficam desabilitados
+    //Metodo que organiza quando o botao "aposta surpresa" é ligado para que os demais fiquem desabilitados
     private void jcbSurpresaActionPerformed(java.awt.event.ActionEvent evt) {
 
         if(!jtfNumero1.getText().isEmpty() ||
@@ -692,113 +711,95 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             jtfNumero5.setEditable(true);
         }
     }
-    
+
     //Metodo que roda quando o botao "Apostar" na Fase 1 é clicado
     private void jbtApostarActionPerformed(java.awt.event.ActionEvent evt) {
-            if(jtfNome.getText().isEmpty() || jtfCPF.getText().isEmpty()) {
-            jtaMensagensTelaInicial.append("Voce precisa inserir um nome e um cpf!\n");
-            return;
-        }
-
-        Apostador apostador = acme.pesquisaApostador(jtfNome.getText().trim(), jtfCPF.getText().trim());
-
-        //Fazer aposta surpresa
-        if(jcbSurpresa.isSelected()) {
-            Aposta a = new Aposta(jtfNome.getText(), jtfCPF.getText());
-            acme.addAposta(a);
-            apostador.adicionarAposta(a);
-            jtaMensagensTelaInicial.append("Aposta " + a.getRegistro() + ": " + a.getNumeros() + "\n");
-
-            jbtSortear.setEnabled(true);
-            return;
-        }
-
-        //Verificar caso algum dos campos esteja vazio
-        if(jtfNumero1.getText().isEmpty() ||
-            jtfNumero2.getText().isEmpty() ||
-            jtfNumero3.getText().isEmpty() ||
-            jtfNumero4.getText().isEmpty() ||
-            jtfNumero5.getText().isEmpty()) {
-            jtaMensagensTelaInicial.append("Voce precisa inserir todos os numeros para apostar!\n");
-            return;
-        }
-
-        String[] lista = {jtfNumero1.getText(),
-            jtfNumero2.getText(),
-            jtfNumero3.getText(),
-            jtfNumero4.getText(),
-            jtfNumero5.getText()};
-
-        //Verificador caso os numeros apostados sejam iguais
-        if(!acme.conferirStrings(lista))  {
-            jtaMensagensTelaInicial.append("Todos os numeros precisam ser diferentes!\n");
-            return;
-        }
-
-        /*
-          Aqui a aposta é criada. Caso os numeros nao sejam entre 1 e 50
-          é "lancada" uma exception. Caso tudo esteja seguindo o padrao
-          a aposta é criada.
-        */
-        try {
-            int n1 = Integer.parseInt(jtfNumero1.getText());
-            int n2 = Integer.parseInt(jtfNumero2.getText());
-            int n3 = Integer.parseInt(jtfNumero3.getText());
-            int n4 = Integer.parseInt(jtfNumero4.getText());
-            int n5 = Integer.parseInt(jtfNumero5.getText());
-
-            if(n1 > 50 || n1 < 1 || n2 > 50 || n2 < 1 ||
-                n3 > 50 || n3 < 1 || n4 > 50 || n4 < 1 ||
-                n5 > 50 || n5 < 1) throw new NumberFormatException();
-
-            int[] vetor = {n1, n2, n3, n4 , n5};
-
-            Aposta aposta = new Aposta(jtfNome.getText(), jtfCPF.getText(), vetor);
-
-            acme.addAposta(aposta);
-            apostador.adicionarAposta(aposta);
-
-            jtaMensagensTelaInicial.append("Aposta " + aposta.getRegistro() + ": " + aposta.getNumeros() + "\n");
-            jbtSortear.setEnabled(true);
-            jtfNumero1.setText("");
-            jtfNumero2.setText("");
-            jtfNumero3.setText("");
-            jtfNumero4.setText("");
-            jtfNumero5.setText("");
-
-        } catch(NumberFormatException e) {
-            jtaMensagensTelaInicial.append("Apenas numeros naturais entre 1 e 50!\n");
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-
+        if(jtfNome.getText().isEmpty() || jtfCPF.getText().isEmpty()) {
+        jtaMensagensTelaInicial.append("Voce precisa inserir um nome e um cpf!\n");
+        return;
     }
 
-    //Botao que inicia o programa
-    private void jbtIniciarActionPerformed(java.awt.event.ActionEvent evt) {
-        jtfNumero1.setEnabled(true);
-        jtfNumero1.setEditable(true);
-        jtfNumero2.setEnabled(true);
-        jtfNumero2.setEditable(true);
-        jtfNumero3.setEnabled(true);
-        jtfNumero3.setEditable(true);
-        jtfNumero4.setEnabled(true);
-        jtfNumero4.setEditable(true);
-        jtfNumero5.setEnabled(true);
-        jtfNumero5.setEditable(true);
-        jtaMensagensTelaInicial.setEnabled(true);
-        jtaMensagensTelaInicial.setEnabled(true);
-        jbtApostar.setEnabled(true);
-        jcbSurpresa.setEnabled(true);
-        jbtIniciar.setEnabled(false);
-        jtfNome.setEnabled(true);
-        jtfNome.setEditable(true);
-        jtfCPF.setEnabled(true);
-        jtfCPF.setEditable(true);
-        jbtLimpar.setEnabled(true);
-        jbtListar.setEnabled(true);
+    Apostador apostador = acme.pesquisaApostador(jtfNome.getText().trim(), jtfCPF.getText().trim());
+
+    //Fazer aposta surpresa
+    if(jcbSurpresa.isSelected()) {
+        Aposta a = new Aposta(jtfNome.getText(), jtfCPF.getText());
+        acme.addAposta(a);
+        apostador.adicionarAposta(a);
+        jtaMensagensTelaInicial.append("Aposta " + a.getRegistro() + ": " + a.getNumeros() + "\n");
+
+        jbtSortear.setEnabled(true);
+        return;
     }
 
+    //Verificar caso algum dos campos esteja vazio
+    if(jtfNumero1.getText().isEmpty() ||
+        jtfNumero2.getText().isEmpty() ||
+        jtfNumero3.getText().isEmpty() ||
+        jtfNumero4.getText().isEmpty() ||
+        jtfNumero5.getText().isEmpty()) {
+        jtaMensagensTelaInicial.append("Voce precisa inserir todos os numeros para apostar!\n");
+        return;
+    }
+
+    String[] lista = {jtfNumero1.getText(),
+        jtfNumero2.getText(),
+        jtfNumero3.getText(),
+        jtfNumero4.getText(),
+        jtfNumero5.getText()};
+
+    //Verificador caso os numeros apostados sejam iguais
+    if(!acme.conferirStrings(lista))  {
+        jtaMensagensTelaInicial.append("Todos os numeros precisam ser diferentes!\n");
+        return;
+    }
+
+    /*
+      Aqui a aposta é criada. Caso os numeros nao sejam entre 1 e 50
+      é "lancada" uma exception. Caso tudo esteja seguindo o padrao
+      a aposta é criada.
+    */
+    try {
+        int n1 = Integer.parseInt(jtfNumero1.getText());
+        int n2 = Integer.parseInt(jtfNumero2.getText());
+        int n3 = Integer.parseInt(jtfNumero3.getText());
+        int n4 = Integer.parseInt(jtfNumero4.getText());
+        int n5 = Integer.parseInt(jtfNumero5.getText());
+
+        if(n1 > 50 || n1 < 1 || n2 > 50 || n2 < 1 ||
+            n3 > 50 || n3 < 1 || n4 > 50 || n4 < 1 ||
+            n5 > 50 || n5 < 1) throw new NumberFormatException();
+
+        int[] vetor = {n1, n2, n3, n4 , n5};
+
+        Aposta aposta = new Aposta(jtfNome.getText(), jtfCPF.getText(), vetor);
+
+        acme.addAposta(aposta);
+        apostador.adicionarAposta(aposta);
+
+        jtaMensagensTelaInicial.append("Aposta " + aposta.getRegistro() + ": " + aposta.getNumeros() + "\n");
+        jbtSortear.setEnabled(true);
+        jtfNumero1.setText("");
+        jtfNumero2.setText("");
+        jtfNumero3.setText("");
+        jtfNumero4.setText("");
+        jtfNumero5.setText("");
+
+    } catch(NumberFormatException e) {
+        jtaMensagensTelaInicial.append("Apenas numeros naturais entre 1 e 50!\n");
+    } catch(Exception e) {
+        e.printStackTrace();
+    }
+
+}
+
+    //Lança uma janela para fazer a confirmacao antes de ir para o sorteio
+    private void jbtSortearActionPerformed(java.awt.event.ActionEvent evt) {
+        int result = JOptionPane.showConfirmDialog(null, "Voce deseja iniciar a fase de sorteio?", "Confirmacao", JOptionPane.YES_NO_OPTION);
+        if(result == JOptionPane.YES_OPTION) avancarFaseApostaParaSorteio();
+        
+    }
+  
     //Mostrar lista de apostas na tela de apuracao
     private void jbtListarApostasApuracaoActionPerformed(java.awt.event.ActionEvent evt) {
         if(acme.getListaAposta().isEmpty()) {
@@ -829,12 +830,6 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             Utils.centralizarConteudoTabela(jTableNumerosFrequencia);
     }
 
-    //Fim do Programa
-    private void jbtBotaoFimActionPerformed(java.awt.event.ActionEvent evt) {
-        JOptionPane.showMessageDialog(null, "Muito obrigado por participar da minha Mega-Sena!\nEspero que tenha gostado");
-        System.exit(0);
-    }
-
     //Metodo para avancar para Fase 2
     private void avancarFaseApostaParaSorteio() {
         FaseAposta.setVisible(false);
@@ -850,10 +845,18 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         if(acme.getListaVencedores().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nenhum apostador ganhou a MegaSena!");
             return;
-        }
+        } 
+        if(acme.getListaVencedores().size() > 1) JOptionPane.showMessageDialog(null, "Parabéns aos " + acme.getListaVencedores().size() + "vencedores!");
+        else JOptionPane.showMessageDialog(null, "Parabéns ao único vencedor!");
         Utils.preencherTabelaVencedores(jTabelaVencedores, acme.getListaVencedores());
         Utils.centralizarConteudoTabela(jTabelaVencedores);
      }
+
+    //Fim do Programa
+    private void jbtBotaoFimActionPerformed(java.awt.event.ActionEvent evt) {
+        JOptionPane.showMessageDialog(null, "Muito obrigado por participar da minha Mega-Sena.\nEspero que tenha gostado!");
+        System.exit(0);
+    }     
 
     private javax.swing.JPanel FaseAposta;
     private javax.swing.JPanel FasePremiacao;
