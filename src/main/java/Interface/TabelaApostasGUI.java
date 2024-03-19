@@ -1,34 +1,28 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Interface;
+
+import javax.swing.JButton;
 
 import Manage.ACMEApostas;
 import Manage.Utils;
-import javax.swing.JButton;
-
-/**
- *
- * @author nico
- */
 public class TabelaApostasGUI extends javax.swing.JFrame {
     
     private JButton jbt;
+    private Utils utils;
     
+    //Janela que mostra todas as listas
     public TabelaApostasGUI(ACMEApostas acmeApostas, JButton jbt) {
+        utils = new Utils(acmeApostas);
         this.jbt = jbt;
         initComponents();
-        setVisible(true);
         setTitle("Lista de Apostas");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         acmeApostas.setValoresListarTable(jTable);
-        Utils.centralizarConteudoTabela(jTable);
+        utils.centralizarConteudoTabela(jTable);
+        setVisible(true);
     }
     
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -77,11 +71,7 @@ public class TabelaApostasGUI extends javax.swing.JFrame {
         }
 
         jbtVoltar.setText("Voltar");
-        jbtVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtVoltarActionPerformed(evt);
-            }
-        });
+        jbtVoltar.addActionListener(evt -> jbtVoltarActionPerformed(evt));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -124,19 +114,16 @@ public class TabelaApostasGUI extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void jbtVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtVoltarActionPerformed
+    private void jbtVoltarActionPerformed(java.awt.event.ActionEvent evt) {
         jbt.setEnabled(true);
         setVisible(false);
         dispose();
-    }//GEN-LAST:event_jbtVoltarActionPerformed
+    }
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
     private javax.swing.JButton jbtVoltar;
-    // End of variables declaration//GEN-END:variables
 }

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,6 +28,10 @@ public class ACMEApostas {
         entrar = false;
     }
     
+    /*
+     * Metodo que faz a verificacao para que caso 1 CPFS aposte mais de uma vez,
+     * as apostas sejam atribuidas ao mesmo apostador
+     */
     public Apostador pesquisaApostador(String nome, String cpf) {
         Apostador a = new Apostador(nome, cpf);
         for (Apostador a1 : listaApostadores) {
@@ -45,6 +47,7 @@ public class ACMEApostas {
         return listaApostas.add(aposta);
     }
     
+    //Apuracao das apostas
     public void apuracao() {
         if(apostaPremiada.getContador()>=30) return;
         for (Aposta aposta : listaApostas) {
@@ -56,34 +59,6 @@ public class ACMEApostas {
         if(entrar) apostaPremiada.setContador();
         apostaPremiada.gerarNovoNumeroSorteado();
         apuracao();
-    }
-
-    public void preencherNumerosSorteados(JTable jtable, JLabel jLabel) {
-        DefaultTableModel model = (DefaultTableModel) jtable.getModel();
-        for (int i = 0; i < 5; i++) {
-            model.addRow(new Object[]{apostaPremiada.getVetor()[i], 1});
-        }
-        for (int i = 5; i < apostaPremiada.getContadorAux(); i++) {//----------------- ERRO AQUI
-            model.addRow(new Object[]{apostaPremiada.getVetor()[i], i-3});
-        }
-        jLabel.setText("Rodadas: " + (apostaPremiada.getContadorAux()-4));
-    }
-
-    public void preencherApostasVencedoras(JTable jtable, JLabel jLabel) {
-        if(listaVencedores.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Apuracao executada!\nNenhum apostador acertou os numeros!");
-            jtable.setEnabled(false);
-            return;
-        }
-        DefaultTableModel tableModel = (DefaultTableModel) jtable.getModel();
-        if(listaVencedores.size()>1) JOptionPane.showMessageDialog(null, "Apuracao executada!\nHouve " + listaVencedores.size() + " vencedores!");
-        else if(listaVencedores.size()==1) JOptionPane.showMessageDialog(null, "Apuracao executada!\nHouve 1 vencedor!");
-        listaVencedores.sort((a1, a2) -> a1.getNome().compareTo(a2.getNome()));
-        for (Aposta aposta : listaVencedores) {
-            String[] lista = {aposta.getRegistro() + "", aposta.getNumeros(), aposta.getNome(), aposta.getCpf()};
-            tableModel.addRow(lista);
-        }
-        jLabel.setText("Quantidade: " + listaVencedores.size());
     }
 
     public boolean conferirPremiada(int[] array) {
@@ -141,4 +116,5 @@ public class ACMEApostas {
     public ArrayList<Aposta> getListaVencedores() {return listaVencedores;}
     public ArrayList<Aposta> getListaAposta() {return listaApostas;}
     public void setApostaPremiada(Aposta apostaPremiada) {this.apostaPremiada=apostaPremiada;}
+    public Aposta getApostaPremiada() {return apostaPremiada;}
 }
