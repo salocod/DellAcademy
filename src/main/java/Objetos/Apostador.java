@@ -5,8 +5,7 @@ import java.util.ArrayList;
 public class Apostador {
     
     
-    private String nome;
-    private String cpf;
+    private String nome, cpf;
     private ArrayList<Aposta> apostas;
     
     public Apostador(String nome, String cpf) {

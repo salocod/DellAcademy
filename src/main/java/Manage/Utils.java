@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Manage;
 
 import java.util.ArrayList;
@@ -18,11 +14,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 import Objetos.Aposta;
-
-/**
- *
- * @author nico
- */
 public class Utils {
 
     private ACMEApostas acme;
@@ -30,8 +21,7 @@ public class Utils {
     public Utils(ACMEApostas acme) {
         this.acme = acme;
     }
-
-
+    
     public void preencherNumerosSorteados(JTable jtable, JLabel jLabel) {
         DefaultTableModel model = (DefaultTableModel) jtable.getModel();
         for (int i = 0; i < 5; i++) {
@@ -58,20 +48,6 @@ public class Utils {
             tableModel.addRow(lista);
         }
         jLabel.setText("Quantidade: " + acme.getListaVencedores().size());
-    }
-    
-    
-    //USO PARA CENTRALIZAR ITENS TABELA
-    public void centralizarConteudoTabela(JTable jTable) {
-        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-        renderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
-        
-        TableColumnModel columnModel = jTable.getColumnModel();
-        int columns = columnModel.getColumnCount();
-        
-        for (int i = 0; i < columns; i++) {
-            columnModel.getColumn(i).setCellRenderer(renderer);
-        }
     }
     
     public void preencherTabelaVencedores(JTable jtable, ArrayList<Aposta> listaVencedores) {
@@ -108,6 +84,19 @@ public class Utils {
         return mapa.entrySet().stream()
                 .sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
+    }
+
+    //USO PARA CENTRALIZAR ITENS TABELA
+    public void centralizarConteudoTabela(JTable jTable) {
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+        renderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+        
+        TableColumnModel columnModel = jTable.getColumnModel();
+        int columns = columnModel.getColumnCount();
+        
+        for (int i = 0; i < columns; i++) {
+            columnModel.getColumn(i).setCellRenderer(renderer);
+        }
     }
 
     
