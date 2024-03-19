@@ -41,7 +41,7 @@ public class Aposta {
             do {
                 numero = new Random().nextInt(1, 50);
             } while(numeros.contains(numero));
-                aposta[contador] = numero;
+                aposta[contador] = i+1;
                 contador++;
                 contadorAux = contador;
                 numeros.add(numero);

@@ -818,8 +818,8 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             jTableNumeroRodadas.setEnabled(true);
             jbtAvancarFasePremiacao.setEnabled(true);
             jbtListarApostasApuracao.setEnabled(true);
-            jlbSorteio.setText("Apuracao");
-            setTitle("Fase 3: Apuracao");
+            jlbSorteio.setText("Apuração");
+            setTitle("Fase 3: Apuração");
             acme.setApostaPremiada(new Aposta());
             acme.apuracao();
             Utils.preencherApostasVencedoras(jTableApostasVencedoras, JLableQtdVencedores);
@@ -846,7 +846,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Nenhum apostador ganhou a MegaSena!");
             return;
         } 
-        if(acme.getListaVencedores().size() > 1) JOptionPane.showMessageDialog(null, "Parabéns aos " + acme.getListaVencedores().size() + "vencedores!");
+        if(acme.getListaVencedores().size() > 1) JOptionPane.showMessageDialog(null, "Parabéns aos " + acme.getListaVencedores().size() + " vencedores!");
         else JOptionPane.showMessageDialog(null, "Parabéns ao único vencedor!");
         Utils.preencherTabelaVencedores(jTabelaVencedores, acme.getListaVencedores());
         Utils.centralizarConteudoTabela(jTabelaVencedores);
