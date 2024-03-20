@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
 import Objetos.Aposta;
 import Objetos.Apostador;
 
@@ -81,15 +78,6 @@ public class ACMEApostas {
             apostasX.add(aposta.getVetor());
         }
         return apostasX;
-    }
-
-    //JTABLE
-    public void setValoresListarTable(JTable jtable) {
-        DefaultTableModel tableModel = (DefaultTableModel) jtable.getModel();
-        for (Aposta aposta : listaApostas) {
-            String[] lista = {aposta.getRegistro() + "", aposta.getNumeros(), aposta.getNome(), aposta.getCpf()};
-            tableModel.addRow(lista);
-        }
     }
 
     public ArrayList<Aposta> getListaVencedores() {return listaVencedores;}

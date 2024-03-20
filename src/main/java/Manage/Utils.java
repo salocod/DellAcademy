@@ -14,12 +14,21 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 import Objetos.Aposta;
+
 public class Utils {
 
     private ACMEApostas acme;
 
     public Utils(ACMEApostas acme) {
         this.acme = acme;
+    }
+
+    public void setValoresListarTable(JTable jtable) {
+        DefaultTableModel tableModel = (DefaultTableModel) jtable.getModel();
+        for (Aposta aposta : acme.getListaAposta()) {
+            String[] lista = {aposta.getRegistro() + "", aposta.getNumeros(), aposta.getNome(), aposta.getCpf()};
+            tableModel.addRow(lista);
+        }
     }
     
     public void preencherNumerosSorteados(JTable jtable, JLabel jLabel) {

@@ -393,11 +393,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         jbtListarApostasApuracao.setMaximumSize(new java.awt.Dimension(70, 24));
         jbtListarApostasApuracao.setMinimumSize(new java.awt.Dimension(70, 24));
         jbtListarApostasApuracao.setPreferredSize(new java.awt.Dimension(70, 24));
-        jbtListarApostasApuracao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtListarApostasApuracaoActionPerformed(evt);
-            }
-        });
+        jbtListarApostasApuracao.addActionListener(evt -> jbtListarApostasApuracaoActionPerformed(evt));
 
         jbtSortearSorteio.setText("Sortear");
         jbtSortearSorteio.addActionListener(evt -> jbtSortearSorteioActionPerformed(evt));
@@ -539,11 +535,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         jLabel11.setText("R$100.000.000,00");
 
         jbtBotaoFim.setText("Finalizar");
-        jbtBotaoFim.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtBotaoFimActionPerformed(evt);
-            }
-        });
+        jbtBotaoFim.addActionListener(evt -> jbtBotaoFimActionPerformed(evt));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -714,8 +706,8 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
 
     //Metodo que roda quando o botao "Apostar" na Fase 1 é clicado
     private void jbtApostarActionPerformed(java.awt.event.ActionEvent evt) {
-        if(jtfNome.getText().isEmpty() || jtfCPF.getText().isEmpty()) {
-        jtaMensagensTelaInicial.append("Voce precisa inserir um nome e um CPF!\n");
+        if(jtfNome.getText().trim().isEmpty() || jtfCPF.getText().trim().isEmpty()) {
+        jtaMensagensTelaInicial.append("Voce precisa inserir um nome e um cpf!\n");
         return;
     }
 
@@ -733,11 +725,11 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
     }
 
     //Verificar caso algum dos campos esteja vazio
-    if(jtfNumero1.getText().isEmpty() ||
-        jtfNumero2.getText().isEmpty() ||
-        jtfNumero3.getText().isEmpty() ||
-        jtfNumero4.getText().isEmpty() ||
-        jtfNumero5.getText().isEmpty()) {
+    if(jtfNumero1.getText().trim().isEmpty() ||
+        jtfNumero2.getText().trim().isEmpty() ||
+        jtfNumero3.getText().trim().isEmpty() ||
+        jtfNumero4.getText().trim().isEmpty() ||
+        jtfNumero5.getText().trim().isEmpty()) {
         jtaMensagensTelaInicial.append("Voce precisa inserir todos os numeros para apostar!\n");
         return;
     }
