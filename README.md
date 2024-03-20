@@ -1,6 +1,4 @@
-Trabalho de desenvolvimento em Java, utilizando interface grafica e Maven. 
-
-Trabalho feito para o processo seletivo Dell Academy.
+Trabalho de desenvolvimento em Java, utilizando interface grafica e Maven para o processo seletivo Dell IT Academy - 2024/01 
 Enunciado: 
 Esta atividade consiste no desenvolvimento de um sistema de controle de apostas,
 similar à Mega-Sena® e outros. O sistema deverá funcionar em 4 fases: fase de
