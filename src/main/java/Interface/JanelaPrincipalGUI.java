@@ -348,7 +348,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
             jTableApostasVencedoras.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jLabel6.setText("Frequencias:");
+        jLabel6.setText("Frequências:");
 
         JLableQtdRodadas.setText("Rodadas:");
 
@@ -488,7 +488,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         cardJPanel.add(FaseSorteioApuracao, "card3");
 
         jlbPremiacao.setFont(new java.awt.Font("Segoe UI Symbol", 1, 40)); 
-        jlbPremiacao.setText("Premio:");
+        jlbPremiacao.setText("Prêmio:");
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dell.png"))); 
         jLabel8.setText("jLabel8");
@@ -498,7 +498,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
 
         jLabel4.setText("Nicolas Fonseca Docolas");
 
-        jLabel9.setText("Trabalho de desenvolvimento em Java");
+        jLabel9.setText("  Processo seletivo Dell Academy");
 
         jLabel10.setText("PUCRS - 2024");
 
@@ -715,7 +715,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
     //Metodo que roda quando o botao "Apostar" na Fase 1 é clicado
     private void jbtApostarActionPerformed(java.awt.event.ActionEvent evt) {
         if(jtfNome.getText().isEmpty() || jtfCPF.getText().isEmpty()) {
-        jtaMensagensTelaInicial.append("Voce precisa inserir um nome e um cpf!\n");
+        jtaMensagensTelaInicial.append("Voce precisa inserir um nome e um CPF!\n");
         return;
     }
 
@@ -841,7 +841,7 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
     private void jbtAvancarFasePremiacaoActionPerformed(java.awt.event.ActionEvent evt) {
         FaseSorteioApuracao.setVisible(false);
         FasePremiacao.setVisible(true);
-        setTitle("Fase 4: Premiacao");
+        setTitle("Fase 4: Premiação");
         if(acme.getListaVencedores().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nenhum apostador ganhou a MegaSena!");
             return;
