@@ -709,13 +709,19 @@ public class JanelaPrincipalGUI extends javax.swing.JFrame {
         if(jtfNome.getText().trim().isEmpty() || jtfCPF.getText().trim().isEmpty()) {
         jtaMensagensTelaInicial.append("Voce precisa inserir um nome e um cpf!\n");
         return;
-    }
+        }
+
+        if(!jtfNome.getText().trim().matches("[a-zA-ZÀ-ú ]+") || 
+        !jtfCPF.getText().trim().matches("[0-9]+")) {
+            jtaMensagensTelaInicial.append("Padrão inválido! O nome deve ser apenas texto e o CPF apenas números.\n");
+            return;
+        }
 
     Apostador apostador = acme.pesquisaApostador(jtfNome.getText().trim(), jtfCPF.getText().trim());
 
     //Fazer aposta surpresa
     if(jcbSurpresa.isSelected()) {
-        Aposta a = new Aposta(jtfNome.getText(), jtfCPF.getText());
+        Aposta a = new Aposta(apostador.getNome(), apostador.getCpf());
         acme.addAposta(a);
         apostador.adicionarAposta(a);
         jtaMensagensTelaInicial.append("Aposta " + a.getRegistro() + ": " + a.getNumeros() + "\n");
